@@ -18,6 +18,202 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\bbruntime\basic.cpp" />
+    <ClCompile Include="..\src\bbruntime\bbaudio.cpp" />
+    <ClCompile Include="..\src\bbruntime\bbbank.cpp" />
+    <ClCompile Include="..\src\bbruntime\bbblitz3d.cpp" />
+    <ClCompile Include="..\src\bbruntime\bbfilesystem.cpp" />
+    <ClCompile Include="..\src\bbruntime\bbgraphics.cpp" />
+    <ClCompile Include="..\src\bbruntime\bbinput.cpp" />
+    <ClCompile Include="..\src\bbruntime\bbmath.cpp" />
+    <ClCompile Include="..\src\bbruntime\bbruntime.cpp" />
+    <ClCompile Include="..\src\bbruntime\bbsockets.cpp" />
+    <ClCompile Include="..\src\bbruntime\bbstream.cpp" />
+    <ClCompile Include="..\src\bbruntime\bbstring.cpp" />
+    <ClCompile Include="..\src\bbruntime\bbsys.cpp" />
+    <ClCompile Include="..\src\bbruntime\multiplay.cpp" />
+    <ClCompile Include="..\src\bbruntime\multiplay_setup.cpp" />
+    <ClCompile Include="..\src\bbruntime\runtime.cpp" />
+    <ClCompile Include="..\src\bbruntime\std.cpp" />
+    <ClCompile Include="..\src\bbruntime\userlib.cpp" />
+    <ClCompile Include="..\src\bbruntime\userlibs.cpp" />
+    <ClCompile Include="..\src\blitz3d\animation.cpp" />
+    <ClCompile Include="..\src\blitz3d\animator.cpp" />
+    <ClCompile Include="..\src\blitz3d\bd2model.cpp" />
+    <ClCompile Include="..\src\blitz3d\boxvis.cpp" />
+    <ClCompile Include="..\src\blitz3d\brush.cpp" />
+    <ClCompile Include="..\src\blitz3d\cachedtexture.cpp" />
+    <ClCompile Include="..\src\blitz3d\camera.cpp" />
+    <ClCompile Include="..\src\blitz3d\collision.cpp" />
+    <ClCompile Include="..\src\blitz3d\emitter.cpp" />
+    <ClCompile Include="..\src\blitz3d\entity.cpp" />
+    <ClCompile Include="..\src\blitz3d\frustum.cpp" />
+    <ClCompile Include="..\src\blitz3d\geom.cpp" />
+    <ClCompile Include="..\src\blitz3d\light.cpp" />
+    <ClCompile Include="..\src\blitz3d\listener.cpp" />
+    <ClCompile Include="..\src\blitz3d\loader.cpp" />
+    <ClCompile Include="..\src\blitz3d\loader_3ds.cpp" />
+    <ClCompile Include="..\src\blitz3d\loader_b3d.cpp" />
+    <ClCompile Include="..\src\blitz3d\loader_x.cpp" />
+    <ClCompile Include="..\src\blitz3d\md2model.cpp" />
+    <ClCompile Include="..\src\blitz3d\md2model_bak.cpp" />
+    <ClCompile Include="..\src\blitz3d\md2norms.cpp" />
+    <ClCompile Include="..\src\blitz3d\md2rep.cpp" />
+    <ClCompile Include="..\src\blitz3d\meshcollider.cpp" />
+    <ClCompile Include="..\src\blitz3d\meshloader.cpp" />
+    <ClCompile Include="..\src\blitz3d\meshmodel.cpp" />
+    <ClCompile Include="..\src\blitz3d\meshutil.cpp" />
+    <ClCompile Include="..\src\blitz3d\mirror.cpp" />
+    <ClCompile Include="..\src\blitz3d\model.cpp" />
+    <ClCompile Include="..\src\blitz3d\ms3drep.cpp" />
+    <ClCompile Include="..\src\blitz3d\object.cpp" />
+    <ClCompile Include="..\src\blitz3d\pivot.cpp" />
+    <ClCompile Include="..\src\blitz3d\planemodel.cpp" />
+    <ClCompile Include="..\src\blitz3d\q3bspmodel.cpp" />
+    <ClCompile Include="..\src\blitz3d\q3bsprep.cpp" />
+    <ClCompile Include="..\src\blitz3d\skinmodel.cpp" />
+    <ClCompile Include="..\src\blitz3d\sprite.cpp" />
+    <ClCompile Include="..\src\blitz3d\std.cpp" />
+    <ClCompile Include="..\src\blitz3d\surface.cpp" />
+    <ClCompile Include="..\src\blitz3d\terrain.cpp" />
+    <ClCompile Include="..\src\blitz3d\terrainrep.cpp" />
+    <ClCompile Include="..\src\blitz3d\texture.cpp" />
+    <ClCompile Include="..\src\blitz3d\world.cpp" />
+    <ClCompile Include="..\src\blitz\libs.cpp" />
+    <ClCompile Include="..\src\compiler\assem_x86\asm_insts.cpp" />
+    <ClCompile Include="..\src\compiler\assem_x86\assem_x86.cpp" />
+    <ClCompile Include="..\src\compiler\assem_x86\operand.cpp" />
+    <ClCompile Include="..\src\compiler\codegen_x86\codegen_x86.cpp" />
+    <ClCompile Include="..\src\compiler\codegen_x86\tile.cpp" />
+    <ClCompile Include="..\src\compiler\compiler.cpp" />
+    <ClCompile Include="..\src\compiler\decl.cpp" />
+    <ClCompile Include="..\src\compiler\declnode.cpp" />
+    <ClCompile Include="..\src\compiler\environ.cpp" />
+    <ClCompile Include="..\src\compiler\exprnode.cpp" />
+    <ClCompile Include="..\src\compiler\node.cpp" />
+    <ClCompile Include="..\src\compiler\parser.cpp" />
+    <ClCompile Include="..\src\compiler\prognode.cpp" />
+    <ClCompile Include="..\src\compiler\std.cpp" />
+    <ClCompile Include="..\src\compiler\stmtnode.cpp" />
+    <ClCompile Include="..\src\compiler\toker.cpp" />
+    <ClCompile Include="..\src\compiler\type.cpp" />
+    <ClCompile Include="..\src\compiler\varnode.cpp" />
+    <ClCompile Include="..\src\linker\dlltoexe.cpp" />
+    <ClCompile Include="..\src\linker\image_util.cpp" />
+    <ClCompile Include="..\src\linker\linker.cpp" />
+    <ClCompile Include="..\src\linker\std.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\stdutil\stdutil.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\bbruntime\basic.h" />
+    <ClInclude Include="..\src\bbruntime\bbaudio.h" />
+    <ClInclude Include="..\src\bbruntime\bbbank.h" />
+    <ClInclude Include="..\src\bbruntime\bbblitz3d.h" />
+    <ClInclude Include="..\src\bbruntime\bbfilesystem.h" />
+    <ClInclude Include="..\src\bbruntime\bbgraphics.h" />
+    <ClInclude Include="..\src\bbruntime\bbinput.h" />
+    <ClInclude Include="..\src\bbruntime\bbmath.h" />
+    <ClInclude Include="..\src\bbruntime\bbruntime.h" />
+    <ClInclude Include="..\src\bbruntime\bbsockets.h" />
+    <ClInclude Include="..\src\bbruntime\bbstream.h" />
+    <ClInclude Include="..\src\bbruntime\bbstring.h" />
+    <ClInclude Include="..\src\bbruntime\bbsys.h" />
+    <ClInclude Include="..\src\bbruntime\bb_basic.h" />
+    <ClInclude Include="..\src\bbruntime\multiplay.h" />
+    <ClInclude Include="..\src\bbruntime\multiplay_setup.h" />
+    <ClInclude Include="..\src\bbruntime\resource.h" />
+    <ClInclude Include="..\src\bbruntime\std.h" />
+    <ClInclude Include="..\src\bbruntime\userlib.h" />
+    <ClInclude Include="..\src\bbruntime\userlibs.h" />
+    <ClInclude Include="..\src\blitz3d\animation.h" />
+    <ClInclude Include="..\src\blitz3d\animator.h" />
+    <ClInclude Include="..\src\blitz3d\bd2model.h" />
+    <ClInclude Include="..\src\blitz3d\blitz3d.h" />
+    <ClInclude Include="..\src\blitz3d\brush.h" />
+    <ClInclude Include="..\src\blitz3d\cachedtexture.h" />
+    <ClInclude Include="..\src\blitz3d\camera.h" />
+    <ClInclude Include="..\src\blitz3d\collision.h" />
+    <ClInclude Include="..\src\blitz3d\emitter.h" />
+    <ClInclude Include="..\src\blitz3d\entity.h" />
+    <ClInclude Include="..\src\blitz3d\entityutil.h" />
+    <ClInclude Include="..\src\blitz3d\frustum.h" />
+    <ClInclude Include="..\src\blitz3d\geom.h" />
+    <ClInclude Include="..\src\blitz3d\group.h" />
+    <ClInclude Include="..\src\blitz3d\light.h" />
+    <ClInclude Include="..\src\blitz3d\listener.h" />
+    <ClInclude Include="..\src\blitz3d\loader.h" />
+    <ClInclude Include="..\src\blitz3d\loader_3ds.h" />
+    <ClInclude Include="..\src\blitz3d\loader_b3d.h" />
+    <ClInclude Include="..\src\blitz3d\loader_x.h" />
+    <ClInclude Include="..\src\blitz3d\md2model.h" />
+    <ClInclude Include="..\src\blitz3d\md2norms.h" />
+    <ClInclude Include="..\src\blitz3d\md2rep.h" />
+    <ClInclude Include="..\src\blitz3d\mesh.h" />
+    <ClInclude Include="..\src\blitz3d\meshcollider.h" />
+    <ClInclude Include="..\src\blitz3d\meshloader.h" />
+    <ClInclude Include="..\src\blitz3d\meshmodel.h" />
+    <ClInclude Include="..\src\blitz3d\meshrenderer.h" />
+    <ClInclude Include="..\src\blitz3d\meshutil.h" />
+    <ClInclude Include="..\src\blitz3d\mirror.h" />
+    <ClInclude Include="..\src\blitz3d\model.h" />
+    <ClInclude Include="..\src\blitz3d\ms3drep.h" />
+    <ClInclude Include="..\src\blitz3d\object.h" />
+    <ClInclude Include="..\src\blitz3d\pivot.h" />
+    <ClInclude Include="..\src\blitz3d\planemodel.h" />
+    <ClInclude Include="..\src\blitz3d\q3bspmodel.h" />
+    <ClInclude Include="..\src\blitz3d\q3bsprep.h" />
+    <ClInclude Include="..\src\blitz3d\rendercontext.h" />
+    <ClInclude Include="..\src\blitz3d\skinmodel.h" />
+    <ClInclude Include="..\src\blitz3d\sprite.h" />
+    <ClInclude Include="..\src\blitz3d\std.h" />
+    <ClInclude Include="..\src\blitz3d\surface.h" />
+    <ClInclude Include="..\src\blitz3d\terrain.h" />
+    <ClInclude Include="..\src\blitz3d\terrainmodel.h" />
+    <ClInclude Include="..\src\blitz3d\terrainrep.h" />
+    <ClInclude Include="..\src\blitz3d\texture.h" />
+    <ClInclude Include="..\src\blitz3d\texturecache.h" />
+    <ClInclude Include="..\src\blitz3d\world.h" />
+    <ClInclude Include="..\src\blitz\libs.h" />
+    <ClInclude Include="..\src\compiler\assem.h" />
+    <ClInclude Include="..\src\compiler\assem_x86\assem_x86.h" />
+    <ClInclude Include="..\src\compiler\assem_x86\insts.h" />
+    <ClInclude Include="..\src\compiler\assem_x86\operand.h" />
+    <ClInclude Include="..\src\compiler\codegen.h" />
+    <ClInclude Include="..\src\compiler\codegen_x86\codegen_x86.h" />
+    <ClInclude Include="..\src\compiler\codegen_x86\tile.h" />
+    <ClInclude Include="..\src\compiler\compiler.h" />
+    <ClInclude Include="..\src\compiler\decl.h" />
+    <ClInclude Include="..\src\compiler\declnode.h" />
+    <ClInclude Include="..\src\compiler\environ.h" />
+    <ClInclude Include="..\src\compiler\ex.h" />
+    <ClInclude Include="..\src\compiler\exprnode.h" />
+    <ClInclude Include="..\src\compiler\label.h" />
+    <ClInclude Include="..\src\compiler\node.h" />
+    <ClInclude Include="..\src\compiler\nodes.h" />
+    <ClInclude Include="..\src\compiler\parser.h" />
+    <ClInclude Include="..\src\compiler\prognode.h" />
+    <ClInclude Include="..\src\compiler\std.h" />
+    <ClInclude Include="..\src\compiler\stmtnode.h" />
+    <ClInclude Include="..\src\compiler\stringmap.h" />
+    <ClInclude Include="..\src\compiler\toker.h" />
+    <ClInclude Include="..\src\compiler\type.h" />
+    <ClInclude Include="..\src\compiler\var.h" />
+    <ClInclude Include="..\src\compiler\varnode.h" />
+    <ClInclude Include="..\src\config\config.h" />
+    <ClInclude Include="..\src\linker\dlltoexe.h" />
+    <ClInclude Include="..\src\linker\image_util.h" />
+    <ClInclude Include="..\src\linker\linker.h" />
+    <ClInclude Include="..\src\linker\std.h" />
+    <ClInclude Include="..\src\stdutil\stdutil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\bbruntime\bbruntime.vcxproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\src\bbruntime\multiplay_setup.rc" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{72B52607-C8C6-4D52-84D3-C542E8FFB26C}</ProjectGuid>
@@ -114,8 +310,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
