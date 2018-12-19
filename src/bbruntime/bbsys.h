@@ -3,15 +3,17 @@
 #define BBSYS_H
 
 #include "basic.h"
-#include "../gxruntime/gxruntime.h"
 
-extern bool debug;
-extern gxRuntime *gx_runtime;
+inline void debugError(const char* e)
+{
+    std::cerr << "Error: " << e << endl;
+    exit(1);
+}
 
-struct bbEx{
+struct bbEx : std::exception{
 	const char *err;
 	bbEx( const char *e ):err(e){
-		if( e ) gx_runtime->debugError( e );
+		if( e ) debugError( e );
 	}
 };
 

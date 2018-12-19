@@ -287,7 +287,7 @@ ExprNode *UniExprNode::semant( Environ *e ){
 	sem_type=expr->sem_type;
 	if( sem_type!=Type::int_type && sem_type!=Type::float_type ) ex( "Illegal operator for type" );
 	if( ConstNode *c=expr->constNode() ){
-		ExprNode *e;
+		ExprNode *e = 0;
 		if( sem_type==Type::int_type ){
 			switch( op ){
 			case '+':e=d_new IntConstNode( +c->intValue() );break;
@@ -338,7 +338,7 @@ ExprNode *BinExprNode::semant( Environ *e ){
 	rhs=rhs->semant(e);rhs=rhs->castTo( Type::int_type,e );
 	ConstNode *lc=lhs->constNode(),*rc=rhs->constNode();
 	if( lc && rc ){
-		ExprNode *expr;
+		ExprNode *expr = 0;
 		switch( op ){
 		case AND:expr=d_new IntConstNode( lc->intValue() & rc->intValue() );break;
 		case OR: expr=d_new IntConstNode( lc->intValue() | rc->intValue() );break;
@@ -394,7 +394,7 @@ ExprNode *ArithExprNode::semant( Environ *e ){
 		}
 	}
 	if( lc && rc ){
-		ExprNode *expr;
+		ExprNode *expr = 0;
 		if( sem_type==Type::string_type ){
 			expr=d_new StringConstNode( lc->stringValue()+rc->stringValue() );
 		}else if( sem_type==Type::int_type ){
@@ -466,7 +466,7 @@ ExprNode *RelExprNode::semant( Environ *e ){
 	rhs=rhs->castTo( opType,e );
 	ConstNode *lc=lhs->constNode(),*rc=rhs->constNode();
 	if( lc && rc ){
-		ExprNode *expr;
+		ExprNode *expr = 0;
 		if( opType==Type::string_type ){
 			switch( op ){
 			case '<':expr=d_new IntConstNode( lc->stringValue()< rc->stringValue() );break;

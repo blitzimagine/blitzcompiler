@@ -7,12 +7,6 @@
     <Filter Include="src\bbruntime">
       <UniqueIdentifier>{877e614b-5092-431d-973a-93dfa64a7dd8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\blitz">
-      <UniqueIdentifier>{967be809-67e6-4aeb-89a3-46c6b55ba842}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\blitz3d">
-      <UniqueIdentifier>{7b46e777-d730-4547-be45-7cea099df4bb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\compiler">
       <UniqueIdentifier>{f42ac363-6e89-4202-8f8b-673196438b84}</UniqueIdentifier>
     </Filter>
@@ -30,6 +24,9 @@
     </Filter>
     <Filter Include="src\stdutil">
       <UniqueIdentifier>{715817be-6238-4fb9-aaff-1a03b09f8ee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\blitz">
+      <UniqueIdentifier>{2780ca20-9010-4789-b1b0-8ba8e0e4d49e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +75,6 @@
     <ClCompile Include="..\src\bbruntime\multiplay.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\multiplay_setup.cpp">
-      <Filter>src\bbruntime</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\bbruntime\runtime.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
@@ -92,135 +86,6 @@
     </ClCompile>
     <ClCompile Include="..\src\bbruntime\userlibs.cpp">
       <Filter>src\bbruntime</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz\libs.cpp">
-      <Filter>src\blitz</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\animation.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\animator.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\bd2model.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\boxvis.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\brush.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\cachedtexture.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\camera.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\collision.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\emitter.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\entity.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\frustum.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\geom.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\light.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\listener.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\loader.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\loader_3ds.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\loader_b3d.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\loader_x.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\md2model.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\md2model_bak.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\md2norms.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\md2rep.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\meshcollider.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\meshloader.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\meshmodel.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\meshutil.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\mirror.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\model.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\ms3drep.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\object.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\pivot.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\planemodel.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\q3bspmodel.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\q3bsprep.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\skinmodel.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\sprite.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\std.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\surface.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\terrain.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\terrainrep.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\texture.cpp">
-      <Filter>src\blitz3d</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\blitz3d\world.cpp">
-      <Filter>src\blitz3d</Filter>
     </ClCompile>
     <ClCompile Include="..\src\compiler\assem_x86\asm_insts.cpp">
       <Filter>src\compiler\assem_x86</Filter>
@@ -291,6 +156,12 @@
     <ClCompile Include="..\src\stdutil\stdutil.cpp">
       <Filter>src\stdutil</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\blitz\libs.cpp">
+      <Filter>src\blitz</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\bbruntime\bbruntime_dll.cpp">
+      <Filter>src\bbruntime</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\bbruntime\basic.h">
@@ -338,9 +209,6 @@
     <ClInclude Include="..\src\bbruntime\multiplay.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\multiplay_setup.h">
-      <Filter>src\bbruntime</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\bbruntime\resource.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
@@ -352,153 +220,6 @@
     </ClInclude>
     <ClInclude Include="..\src\bbruntime\userlibs.h">
       <Filter>src\bbruntime</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz\libs.h">
-      <Filter>src\blitz</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\animation.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\animator.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\bd2model.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\blitz3d.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\brush.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\cachedtexture.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\camera.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\collision.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\emitter.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\entity.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\entityutil.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\frustum.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\geom.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\group.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\light.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\listener.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\loader.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\loader_3ds.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\loader_b3d.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\loader_x.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\md2model.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\md2norms.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\md2rep.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\mesh.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\meshcollider.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\meshloader.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\meshmodel.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\meshrenderer.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\meshutil.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\mirror.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\model.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\ms3drep.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\object.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\pivot.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\planemodel.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\q3bspmodel.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\q3bsprep.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\rendercontext.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\skinmodel.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\sprite.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\std.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\surface.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\terrain.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\terrainmodel.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\terrainrep.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\texture.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\texturecache.h">
-      <Filter>src\blitz3d</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\blitz3d\world.h">
-      <Filter>src\blitz3d</Filter>
     </ClInclude>
     <ClInclude Include="..\src\compiler\assem_x86\assem_x86.h">
       <Filter>src\compiler\assem_x86</Filter>
@@ -593,15 +314,11 @@
     <ClInclude Include="..\src\stdutil\stdutil.h">
       <Filter>src\stdutil</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\src\bbruntime\bbruntime.vcxproj">
+    <ClInclude Include="..\src\blitz\libs.h">
+      <Filter>src\blitz</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\bbruntime\bbruntime_dll.h">
       <Filter>src\bbruntime</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="..\src\bbruntime\multiplay_setup.rc">
-      <Filter>src\bbruntime</Filter>
-    </ResourceCompile>
+    </ClInclude>
   </ItemGroup>
 </Project>
