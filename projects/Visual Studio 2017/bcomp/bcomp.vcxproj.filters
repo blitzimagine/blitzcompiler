@@ -78,9 +78,6 @@
     <ClCompile Include="..\..\..\src\bbruntime\runtime.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\bbruntime\std.cpp">
-      <Filter>src\bbruntime</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\bbruntime\userlib.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
@@ -126,9 +123,6 @@
     <ClCompile Include="..\..\..\src\compiler\prognode.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\compiler\std.cpp">
-      <Filter>src\compiler</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\compiler\stmtnode.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
@@ -148,9 +142,6 @@
       <Filter>src\linker</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\linker\linker.cpp">
-      <Filter>src\linker</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\linker\std.cpp">
       <Filter>src\linker</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\stdutil\stdutil.cpp">

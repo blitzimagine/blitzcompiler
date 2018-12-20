@@ -35,7 +35,6 @@
     <ClCompile Include="..\..\..\src\bbruntime\bbsys.cpp" />
     <ClCompile Include="..\..\..\src\bbruntime\multiplay.cpp" />
     <ClCompile Include="..\..\..\src\bbruntime\runtime.cpp" />
-    <ClCompile Include="..\..\..\src\bbruntime\std.cpp" />
     <ClCompile Include="..\..\..\src\bbruntime\userlib.cpp" />
     <ClCompile Include="..\..\..\src\bbruntime\userlibs.cpp" />
     <ClCompile Include="..\..\..\src\blitz\libs.cpp" />
@@ -52,7 +51,6 @@
     <ClCompile Include="..\..\..\src\compiler\node.cpp" />
     <ClCompile Include="..\..\..\src\compiler\parser.cpp" />
     <ClCompile Include="..\..\..\src\compiler\prognode.cpp" />
-    <ClCompile Include="..\..\..\src\compiler\std.cpp" />
     <ClCompile Include="..\..\..\src\compiler\stmtnode.cpp" />
     <ClCompile Include="..\..\..\src\compiler\toker.cpp" />
     <ClCompile Include="..\..\..\src\compiler\type.cpp" />
@@ -60,7 +58,6 @@
     <ClCompile Include="..\..\..\src\linker\dlltoexe.cpp" />
     <ClCompile Include="..\..\..\src\linker\image_util.cpp" />
     <ClCompile Include="..\..\..\src\linker\linker.cpp" />
-    <ClCompile Include="..\..\..\src\linker\std.cpp" />
     <ClCompile Include="..\..\..\src\main.cpp" />
     <ClCompile Include="..\..\..\src\stdutil\stdutil.cpp" />
   </ItemGroup>
