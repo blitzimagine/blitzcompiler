@@ -23,12 +23,6 @@ static void rtSym(std::string sym)
     syms.push_back(sym);
 }
 
-#ifdef PRODEMO
-static void killer() {
-    ExitProcess(-1);
-}
-#endif
-
 int Runtime::version()
 {
     return VERSION;
