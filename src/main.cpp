@@ -39,12 +39,11 @@ static void showHelp()
     showUsage();
     cout << "-h         : show this help" << endl;
     cout << "-q         : quiet mode" << endl;
-    cout << "+q		  : very quiet mode" << endl;
-    cout << "-c         : compile only" << endl;
+    cout << "+q		    : very quiet mode" << endl;
     cout << "-d         : debug compile" << endl;
     cout << "-k         : dump keywords" << endl;
     cout << "+k         : dump keywords and syntax" << endl;
-    cout << "-v		  : version info" << endl;
+    cout << "-v		    : version info" << endl;
     cout << "-o exefile : generate executable" << endl;
 }
 
@@ -140,17 +139,11 @@ static void versInfo()
     cout << "Linker version:" << verstr(lnk_ver) << endl;
 }
 
-static void demoError()
-{
-    cout << "Compiler can not be used standalone in demo version." << endl;
-    exit(0);
-}
-
 int _cdecl main(int argc, char* argv[])
 {
     string in_file, out_file, args;
 
-    bool debug = false, quiet = false, veryquiet = false, compileonly = false;
+    bool debug = false, quiet = false, veryquiet = false;
     bool dumpkeys = false, dumphelp = false, showhelp = false, dumpasm = false;
     bool versinfo = false;
 
@@ -163,59 +156,46 @@ int _cdecl main(int argc, char* argv[])
         if (t == "-h")
         {
             showhelp = true;
-        }
-        else if (t == "-a")
+        } else if (t == "-a")
         {
             dumpasm = true;
-        }
-        else if (t == "-q")
+        } else if (t == "-q")
         {
             quiet = true;
-        }
-        else if (t == "+q")
+        } else if (t == "+q")
         {
             quiet = veryquiet = true;
-        }
-        else if (t == "-c")
-        {
-            compileonly = true;
-        }
-        else if (t == "-d")
+        } else if (t == "-d")
         {
             debug = true;
-        }
-        else if (t == "-k")
+        } else if (t == "-k")
         {
             dumpkeys = true;
-        }
-        else if (t == "+k")
+        } else if (t == "+k")
         {
             dumpkeys = dumphelp = true;
-        }
-        else if (t == "-v")
+        } else if (t == "-v")
         {
             versinfo = true;
-        }
-        else if (t == "-o")
+        } else if (t == "-o")
         {
-            if (out_file.size() || k == argc - 1) usageErr();
+            if (!out_file.empty() || k == argc - 1) usageErr();
             out_file = argv[++k];
-        }
-        else
+        } else
         {
-            if (in_file.size() || t[0] == '-' || t[0] == '+') usageErr();
+            if (!in_file.empty() || t[0] == '-' || t[0] == '+') usageErr();
             in_file = argv[k];
             for (++k; k < argc; ++k)
             {
                 string t = argv[k];
                 if (t.find(' ') != string::npos) t = '\"' + t + '\"';
-                if (args.size()) args += ' ';
+                if (!args.empty()) args += ' ';
                 args += t;
             }
         }
     }
 
-    if (out_file.size() && !in_file.size()) usageErr();
+    if (!out_file.empty() && in_file.empty()) usageErr();
 
     if (showhelp) showHelp();
     if (dumpkeys) dumpKeys(true, true, dumphelp);
@@ -279,8 +259,7 @@ int _cdecl main(int argc, char* argv[])
         module = linkerLib->createModule();
         Assem_x86 assem(asmcode, module);
         assem.assemble();
-    }
-    catch (Ex& x)
+    } catch (Ex& x)
     {
         string file = '\"' + x.file + '\"';
         int row = ((x.pos >> 16) & 65535) + 1, col = (x.pos & 65535) + 1;
