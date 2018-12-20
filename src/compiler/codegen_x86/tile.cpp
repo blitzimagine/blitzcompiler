@@ -253,7 +253,7 @@ void Codegen_x86::leave(TNode* cleanup, int pop_sz)
 
     out << "\t.align\t16\n";
 
-    if (!funcLabel.empty()) out << funcLabel << '\n';
+    if (!funcLabel.empty()) out << funcLabel << ":\n";
 
     out << "\tpush\tebx\n";
     out << "\tpush\tesi\n";
@@ -299,9 +299,11 @@ void Codegen_x86::leave(TNode* cleanup, int pop_sz)
 
 void Codegen_x86::label(const std::string& l)
 {
-    std::string t = l + '\n';
-    if (inCode) codeFrags.push_back(t);
-    else dataFrags.push_back(t);
+    std::string t = l + ":\n";
+    if (inCode)
+        codeFrags.push_back(t);
+    else
+        dataFrags.push_back(t);
 }
 
 void Codegen_x86::align_data(int n)
@@ -313,7 +315,7 @@ void Codegen_x86::align_data(int n)
 
 void Codegen_x86::i_data(int i, const std::string& l)
 {
-    if (!l.empty()) dataFrags.push_back(l);
+    if (!l.empty()) dataFrags.push_back(l + ":");
     char buff[32];
     _itoa_s(i, buff, 32, 10);
     dataFrags.push_back(std::string("\t.dd\t") + buff + '\n');
@@ -321,12 +323,12 @@ void Codegen_x86::i_data(int i, const std::string& l)
 
 void Codegen_x86::s_data(const std::string& s, const std::string& l)
 {
-    if (!l.empty()) dataFrags.push_back(l);
+    if (!l.empty()) dataFrags.push_back(l + ":");
     dataFrags.push_back(std::string("\t.db\t\"") + s + "\",0\n");
 }
 
 void Codegen_x86::p_data(const std::string& p, const std::string& l)
 {
-    if (!l.empty()) dataFrags.push_back(l);
+    if (!l.empty()) dataFrags.push_back(l + ":");
     dataFrags.push_back(std::string("\t.dd\t") + p + '\n');
 }
