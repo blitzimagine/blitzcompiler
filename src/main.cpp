@@ -5,7 +5,6 @@
 #include "config/config.h"
 #include "stdutil/stdutil.h"
 
-#include <set>
 #include <map>
 #include <list>
 #include <string>
@@ -13,7 +12,6 @@
 #include <fstream>
 #include <iostream>
 #include <iomanip>
-#include "bbruntime/bbruntime.h"
 #include "blitz/libs.h"
 
 using namespace std;
