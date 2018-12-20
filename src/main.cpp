@@ -30,7 +30,7 @@ static void showInfo()
 
 static void showUsage()
 {
-    cout << "Usage: blitzcc [-h|-q|+q|-c|-d|-k|+k|-v|-o output] [sourcefile.bb]" << endl;
+    cout << "Usage: blitzcc [-h|-q|+q|-c|-d|-k|+k|-v] [sourcefile.bb] [outputfile.asm]" << endl;
 }
 
 static void showHelp()
@@ -43,13 +43,17 @@ static void showHelp()
     cout << "-k         : dump keywords" << endl;
     cout << "+k         : dump keywords and syntax" << endl;
     cout << "-v         : version info" << endl;
-    cout << "-o file    : output file" << endl;
 }
 
 static void err(const string& t)
 {
     cerr << t << endl;
     exit(-1);
+}
+
+static void out(const string& t)
+{
+    cout << t << endl;
 }
 
 static void usageError()
@@ -177,20 +181,22 @@ int _cdecl main(int argc, char* argv[])
         } else if (t == "-v")
         {
             versinfo = true;
-        } else if (t == "-o")
-        {
-            if (!out_file.empty() || k == argc - 1) usageError();
-            out_file = argv[++k];
         } else
         {
-            if (!in_file.empty() || t[0] == '-' || t[0] == '+') usageError();
-            in_file = argv[k];
-            for (++k; k < argc; ++k)
+            if ((!in_file.empty() && !out_file.empty()) || t[0] == '-' || t[0] == '+')
+                usageError();
+            if (in_file.empty())
             {
-                string t = argv[k];
-                if (t.find(' ') != string::npos) t = '\"' + t + '\"';
-                if (!args.empty()) args += ' ';
-                args += t;
+                in_file = argv[k];
+                if (!args.empty())
+                    args += ' ';
+                args += in_file;
+            } else if (out_file.empty())
+            {
+                out_file = argv[k];
+                if (!args.empty())
+                    args += ' ';
+                args += out_file;
             }
         }
     }
@@ -205,12 +211,39 @@ int _cdecl main(int argc, char* argv[])
     if (dumpkeys) dumpKeys(true, true, dumphelp);
     if (versinfo) versInfo();
 
-    if (in_file.empty()) return 0;
+    if (in_file.empty())
+        return 0;
 
     if (in_file[0] == '\"')
     {
         if (in_file.size() < 3 || in_file[in_file.size() - 1] != '\"') usageError();
         in_file = in_file.substr(1, in_file.size() - 2);
+    }
+
+    if (out_file.empty())
+    {
+        bool foundExtension = false;
+        for (int i = in_file.length() - 1; i >= 0; i--)
+        {
+            char c = in_file[i];
+            if (c == '.')
+            {
+                foundExtension = true;
+                continue;
+            }
+
+            if (foundExtension)
+            {
+                out_file.push_back(c);
+            }
+        }
+        if (foundExtension)
+            reverse(out_file.begin(), out_file.end());
+
+        if (out_file.empty())
+            out_file = in_file;
+
+        out_file += ".asm";
     }
 
     ifstream in(in_file.c_str());
