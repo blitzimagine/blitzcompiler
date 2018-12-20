@@ -168,7 +168,7 @@ static void closeRsrcDir(Section* s, int off, Rsrc* p)
 
     Rdir* dir = (Rdir*)(data + off);
     memset(dir, 0, sizeof(Rdir));
-    dir->num_ids = p->kids.size();
+    dir->num_ids = (short)p->kids.size();
     Rent* ent = (Rent*)(dir + 1);
 
     //to end of dir...
