@@ -44,7 +44,7 @@ static void showHelp()
     cout << "-k         : dump keywords" << endl;
     cout << "+k         : dump keywords and syntax" << endl;
     cout << "-v         : version info" << endl;
-    cout << "-o         : output file" << endl;
+    cout << "-o file    : output file" << endl;
 }
 
 static void err(const string& t)
