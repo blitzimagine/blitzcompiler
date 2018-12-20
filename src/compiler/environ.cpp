@@ -33,8 +33,7 @@ Decl* Environ::findDecl(const string& s)
             if (d->kind & (DECL_LOCAL | DECL_PARAM))
             {
                 if (e == this) return d;
-            }
-            else return d;
+            } else return d;
         }
     }
     return nullptr;

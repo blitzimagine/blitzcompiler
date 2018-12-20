@@ -128,8 +128,7 @@ static void openRsrcDir(Section* s, int off, Rsrc* p)
         {
             //a node - offset is another dir
             openRsrcDir(s, ent->data & 0x7fffffff, r);
-        }
-        else
+        } else
         {
             //a leaf
             Rdat* dat = (Rdat*)(data + ent->data);
@@ -196,8 +195,7 @@ static void closeRsrcDir(Section* s, int off, Rsrc* p)
         if (!r->data)
         {
             closeRsrcDir(s, t, r);
-        }
-        else
+        } else
         {
             Rdat* dat = (Rdat*)(data + t);
             dat->addr = s->sect.virt_addr + t + sizeof(Rdat);
@@ -226,7 +224,6 @@ static void closeRsrcTree(Section* s)
 
     int virt_delta = sectAlign(virt_sz) - sectAlign(s->sect.virt_size);
     int data_delta = fileAlign(virt_sz) - fileAlign(s->sect.virt_size);
-
 
     for (int k = 0; k < (int)sections.size(); ++k)
     {

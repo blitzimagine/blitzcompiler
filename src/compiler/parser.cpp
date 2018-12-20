@@ -36,8 +36,7 @@ ProgNode* Parser::parse(const string& main)
     {
         stmts = parseStmtSeq(STMTS_PROG);
         if (toker->curr() != EOF) exp("end-of-file");
-    }
-    catch (Ex)
+    } catch (Ex)
     {
         delete stmts;
         delete datas;
@@ -171,14 +170,11 @@ void Parser::parseStmtSeq(StmtSeqNode* stmts, int scope)
                         exprs = parseExprSeq();
                         if (toker->curr() != ')') exp("')'");
                         toker->next();
-                    }
-                    else exprs = parseExprSeq();
-                }
-                else exprs = parseExprSeq();
+                    } else exprs = parseExprSeq();
+                } else exprs = parseExprSeq();
                 CallNode* call = d_new CallNode(ident, tag, exprs);
                 result = d_new ExprStmtNode(call);
-            }
-            else
+            } else
             {
                 //must be a var
                 a_ptr<VarNode> var(parseVar(ident, tag));
@@ -271,8 +267,7 @@ void Parser::parseStmtSeq(StmtSeqNode* stmts, int scope)
                 if (toker->curr() != NEXT) exp("'Next'");
                 toker->next();
                 result = d_new ForEachNode(var.release(), ident, stmts.release(), pos);
-            }
-            else
+            } else
             {
                 a_ptr<ExprNode> from, to, step;
                 from = parseExpr(false);
@@ -284,8 +279,7 @@ void Parser::parseStmtSeq(StmtSeqNode* stmts, int scope)
                 {
                     toker->next();
                     step = parseExpr(false);
-                }
-                else step = d_new IntConstNode(1);
+                } else step = d_new IntConstNode(1);
                 stmts = parseStmtSeq(STMTS_BLOCK);
                 int pos = toker->pos();
                 if (toker->curr() != NEXT) exp("'Next'");
@@ -328,8 +322,7 @@ void Parser::parseStmtSeq(StmtSeqNode* stmts, int scope)
                 toker->next();
                 string t = parseIdent();
                 result = d_new DeleteEachNode(t);
-            }
-            else
+            } else
             {
                 ExprNode* expr = parseExpr(false);
                 result = d_new DeleteNode(expr);
@@ -356,16 +349,14 @@ void Parser::parseStmtSeq(StmtSeqNode* stmts, int scope)
                 stmt->pos = pos;
                 pos = toker->pos();
                 stmts->push_back(stmt);
-            }
-            while (toker->curr() == ',');
+            } while (toker->curr() == ',');
             break;
         case RESTORE:
             if (toker->next() == IDENT)
             {
                 result = d_new RestoreNode(toker->text());
                 toker->next();
-            }
-            else result = d_new RestoreNode("");
+            } else result = d_new RestoreNode("");
             break;
         case DATA:
             if (scope != STMTS_PROG) ex("'Data' can only appear in main program");
@@ -374,8 +365,7 @@ void Parser::parseStmtSeq(StmtSeqNode* stmts, int scope)
                 toker->next();
                 ExprNode* expr = parseExpr(false);
                 datas->push_back(d_new DataDeclNode(expr));
-            }
-            while (toker->curr() == ',');
+            } while (toker->curr() == ',');
             break;
         case TYPE:
             if (scope != STMTS_PROG) ex("'Type' can only appear in main program");
@@ -388,8 +378,7 @@ void Parser::parseStmtSeq(StmtSeqNode* stmts, int scope)
             {
                 toker->next();
                 consts->push_back(parseVarDecl(DECL_GLOBAL, true));
-            }
-            while (toker->curr() == ',');
+            } while (toker->curr() == ',');
             break;
         case FUNCTION:
             if (scope != STMTS_PROG) ex("'Function' can only appear in main program");
@@ -404,8 +393,7 @@ void Parser::parseStmtSeq(StmtSeqNode* stmts, int scope)
                 stmt->pos = pos;
                 pos = toker->pos();
                 stmts->push_back(stmt);
-            }
-            while (toker->curr() == ',');
+            } while (toker->curr() == ',');
             break;
         case LOCAL:
             do
@@ -416,8 +404,7 @@ void Parser::parseStmtSeq(StmtSeqNode* stmts, int scope)
                 stmt->pos = pos;
                 pos = toker->pos();
                 stmts->push_back(stmt);
-            }
-            while (toker->curr() == ',');
+            } while (toker->curr() == ',');
             break;
         case GLOBAL:
             if (scope != STMTS_PROG) ex("'Global' can only appear in main program");
@@ -429,8 +416,7 @@ void Parser::parseStmtSeq(StmtSeqNode* stmts, int scope)
                 stmt->pos = pos;
                 pos = toker->pos();
                 stmts->push_back(stmt);
-            }
-            while (toker->curr() == ',');
+            } while (toker->curr() == ',');
             break;
         case '.':
         {
@@ -484,8 +470,7 @@ VarNode* Parser::parseVar(const string& ident, const string& tag)
         if (toker->curr() != ')') exp("')'");
         toker->next();
         var = d_new ArrayVarNode(ident, tag, exprs.release());
-    }
-    else var = d_new IdentVarNode(ident, tag);
+    } else var = d_new IdentVarNode(ident, tag);
 
     for (;;)
     {
@@ -496,8 +481,7 @@ VarNode* Parser::parseVar(const string& ident, const string& tag)
             string tag = parseTypeTag();
             ExprNode* expr = d_new VarExprNode(var.release());
             var = d_new FieldVarNode(expr, ident, tag);
-        }
-        else if (toker->curr() == '[')
+        } else if (toker->curr() == '[')
         {
             toker->next();
             a_ptr<ExprSeqNode> exprs(parseExprSeq());
@@ -505,8 +489,7 @@ VarNode* Parser::parseVar(const string& ident, const string& tag)
             toker->next();
             ExprNode* expr = d_new VarExprNode(var.release());
             var = d_new VectorVarNode(expr, exprs.release());
-        }
-        else
+        } else
         {
             break;
         }
@@ -528,16 +511,14 @@ DeclNode* Parser::parseVarDecl(int kind, bool constant)
         if (exprs->size() != 1 || toker->curr() != ']') exp("']'");
         toker->next();
         d = d_new VectorDeclNode(ident, tag, exprs.release(), kind);
-    }
-    else
+    } else
     {
         ExprNode* expr = nullptr;
         if (toker->curr() == '=')
         {
             toker->next();
             expr = parseExpr(false);
-        }
-        else if (constant) ex("Constants must be initialized");
+        } else if (constant) ex("Constants must be initialized");
         d = d_new VarDeclNode(ident, tag, kind, constant, expr);
     }
     d->pos = pos;
@@ -604,8 +585,7 @@ DeclNode* Parser::parseStructDecl()
         {
             toker->next();
             fields->push_back(parseVarDecl(DECL_FIELD, false));
-        }
-        while (toker->curr() == ',');
+        } while (toker->curr() == ',');
         while (toker->curr() == '\n') toker->next();
     }
     if (toker->curr() != ENDTYPE) exp("'Field' or 'End Type'");
@@ -635,8 +615,7 @@ IfNode* Parser::parseIf()
         ifnode->pos = pos;
         elseOpt = d_new StmtSeqNode(incfile);
         elseOpt->push_back(ifnode);
-    }
-    else if (toker->curr() == ELSE)
+    } else if (toker->curr() == ELSE)
     {
         toker->next();
         elseOpt = parseStmtSeq(blkif ? STMTS_BLOCK : STMTS_LINE);
@@ -644,8 +623,7 @@ IfNode* Parser::parseIf()
     if (blkif)
     {
         if (toker->curr() != ENDIF) exp("'EndIf'");
-    }
-    else if (toker->curr() != '\n') exp("end-of-line");
+    } else if (toker->curr() != '\n') exp("end-of-line");
 
     return d_new IfNode(expr.release(), stmts.release(), elseOpt.release());
 }
@@ -809,8 +787,7 @@ ExprNode* Parser::parseUniExpr(bool opt)
         if (c == '~')
         {
             result = d_new BinExprNode(XOR, result,d_new IntConstNode(-1));
-        }
-        else
+        } else
         {
             result = d_new UniExprNode(c, result);
         }
@@ -907,8 +884,7 @@ ExprNode* Parser::parsePrimary(bool opt)
             if (toker->curr() != ')') exp("')'");
             toker->next();
             result = d_new CallNode(ident, tag, exprs.release());
-        }
-        else
+        } else
         {
             //must be a var
             VarNode* var = parseVar(ident, tag);

@@ -67,8 +67,7 @@ void IdentVarNode::semant(Environ* e)
         Type* ty = sem_decl->type;
         if (ty->constType()) ty = ty->constType()->valueType;
         if (tag.size() && t != ty) ex("Variable type mismatch");
-    }
-    else
+    } else
     {
         //ugly auto decl!
         sem_decl = e->decls->insertDecl(ident, t, DECL_LOCAL);
@@ -107,8 +106,7 @@ TNode* ArrayVarNode::translate(Codegen* g)
         {
             TNode* s = mem(add(global("_a" + ident), iconst(k * 4 + 12)));
             t = jumpge(e, s, "__bbArrayBoundsEx");
-        }
-        else t = e;
+        } else t = e;
     }
     t = add(mem(global("_a" + ident)), mul(t, iconst(4)));
     return t;
@@ -171,8 +169,7 @@ TNode* VectorVarNode::translate(Codegen* g)
         if (ConstNode* t = e->constNode())
         {
             p = iconst(t->intValue() * sz);
-        }
-        else
+        } else
         {
             p = e->translate(g);
             if (g->debug)

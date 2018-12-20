@@ -26,14 +26,12 @@ static bool nodesEqual(TNode* t1, TNode* t2)
     if (t1->l)
     {
         if (!t2->l || !nodesEqual(t1->l, t2->l)) return false;
-    }
-    else if (t2->l) return false;
+    } else if (t2->l) return false;
 
     if (t1->r)
     {
         if (!t2->r || !nodesEqual(t1->r, t2->r)) return false;
-    }
-    else if (t2->r) return false;
+    } else if (t2->r) return false;
 
     return true;
 }
@@ -123,21 +121,18 @@ Tile* Codegen_x86::genCompare(TNode* t, string& func, bool negate)
         if (matchCONST(t->r, c))
         {
             q = "\tcmp\t" + m + "," + c + "\n";
-        }
-        else
+        } else
         {
             q = "\tcmp\t" + m + ",%l\n";
             ql = t->r;
         }
-    }
-    else
+    } else
     {
         if (matchMEMCONST(t->r, m))
         {
             q = "\tcmp\t%l," + m + "\n";
             ql = t->l;
-        }
-        else
+        } else
         {
             q = "\tcmp\t%l,%r\n";
             ql = t->l;
@@ -207,8 +202,7 @@ Tile* Codegen_x86::munchArith(TNode* t)
             {
                 return d_new Tile("\tshl\t%l,byte " + itoa(shift) + "\n", munchReg(t->l));
             }
-        }
-        else if (t->l->op == IR_CONST)
+        } else if (t->l->op == IR_CONST)
         {
             if (getShift(t->l->iconst, shift))
             {
@@ -350,8 +344,7 @@ Tile* Codegen_x86::munchCall(TNode* t)
     if (t->l->op == IR_GLOBAL)
     {
         q = d_new Tile("\tcall\t" + t->l->sconst + "\n", t->r ? munchReg(t->r) : nullptr);
-    }
-    else
+    } else
     {
         q = d_new Tile("\tcall\t%l\n", munchReg(t->l), t->r ? munchReg(t->r) : nullptr);
     }
@@ -425,8 +418,7 @@ Tile* Codegen_x86::munch(TNode* t)
             if (matchCONST(t->l, c))
             {
                 q = d_new Tile("\tmov\t" + s + "," + c + "\n");
-            }
-            else if (t->l->op == IR_ADD || t->l->op == IR_SUB)
+            } else if (t->l->op == IR_ADD || t->l->op == IR_SUB)
             {
                 TNode* p = nullptr;
                 if (nodesEqual(t->l->l, t->r)) p = t->l->r;
@@ -444,8 +436,7 @@ Tile* Codegen_x86::munch(TNode* t)
                     if (matchCONST(p, c))
                     {
                         q = d_new Tile(op + s + "," + c + "\n");
-                    }
-                    else
+                    } else
                     {
                         q = d_new Tile(op + s + ",%l\n", munchReg(p));
                     }
@@ -488,8 +479,7 @@ Tile* Codegen_x86::munchReg(TNode* t)
         if (matchMEM(t->r, s))
         {
             q = d_new Tile("\tmov\t" + s + ",%l\n", munchReg(t->l));
-        }
-        else if (t->r->op == IR_MEM)
+        } else if (t->r->op == IR_MEM)
         {
             q = d_new Tile("\tmov\t[%r],%l\n", munchReg(t->l), munchReg(t->r->l));
         }
@@ -498,8 +488,7 @@ Tile* Codegen_x86::munchReg(TNode* t)
         if (matchMEM(t, s))
         {
             q = d_new Tile("\tmov\t%l," + s + "\n");
-        }
-        else
+        } else
         {
             q = d_new Tile("\tmov\t%l,[%l]\n", munchReg(t->l));
         }

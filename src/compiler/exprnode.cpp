@@ -107,12 +107,10 @@ TNode* ExprSeqNode::translate(Codegen* g, bool cfunc)
             if (ty->stringType())
             {
                 q = call("__bbStrToCStr", q);
-            }
-            else if (ty->structType())
+            } else if (ty->structType())
             {
                 q = d_new TNode(IR_MEM, q);
-            }
-            else if (ty == Type::void_type)
+            } else if (ty == Type::void_type)
             {
                 q = d_new TNode(IR_MEM, add(q, iconst(4)));
             }
@@ -140,12 +138,10 @@ void ExprSeqNode::castTo(DeclSeq* decls, Environ* e, bool cfunc)
         {
             if (cfunc && d->type->structType())
             {
-                if (exprs[k]->sem_type->structType()) { }
-                else if (exprs[k]->sem_type->intType())
+                if (exprs[k]->sem_type->structType()) { } else if (exprs[k]->sem_type->intType())
                 {
                     exprs[k]->sem_type = Type::void_type;
-                }
-                else
+                } else
                 {
                     ex("Illegal type conversion");
                 }
@@ -153,8 +149,7 @@ void ExprSeqNode::castTo(DeclSeq* decls, Environ* e, bool cfunc)
             }
 
             exprs[k] = exprs[k]->castTo(d->type, e);
-        }
-        else
+        } else
         {
             if (!d->defType) ex("Not enough parameters");
             ExprNode* expr = constValue(d->defType);
@@ -205,8 +200,7 @@ TNode* CallNode::translate(Codegen* g)
     if (sem_type == Type::float_type)
     {
         t = d_new TNode(IR_FCALL, l, r, exprs->size() * 4);
-    }
-    else
+    } else
     {
         t = d_new TNode(IR_CALL, l, r, exprs->size() * 4);
     }
@@ -360,8 +354,7 @@ ExprNode* UniExprNode::semant(Environ* e)
             case SGN: e = d_new IntConstNode(c->intValue() > 0 ? 1 : (c->intValue() < 0 ? -1 : 0));
                 break;
             }
-        }
-        else
+        } else
         {
             switch (op)
             {
@@ -395,8 +388,7 @@ TNode* UniExprNode::translate(Codegen* g)
         case ABS: return call("__bbAbs", l);
         case SGN: return call("__bbSgn", l);
         }
-    }
-    else
+    } else
     {
         switch (op)
         {
@@ -484,13 +476,11 @@ ExprNode* ArithExprNode::semant(Environ* e)
         //one side is a string - only + operator...
         if (op != '+') ex("Operator cannot be applied to strings");
         sem_type = Type::string_type;
-    }
-    else if (op == '^' || lhs->sem_type == Type::float_type || rhs->sem_type == Type::float_type)
+    } else if (op == '^' || lhs->sem_type == Type::float_type || rhs->sem_type == Type::float_type)
     {
         //It's ^, or one side is a float
         sem_type = Type::float_type;
-    }
-    else
+    } else
     {
         //must be 2 ints
         sem_type = Type::int_type;
@@ -511,8 +501,7 @@ ExprNode* ArithExprNode::semant(Environ* e)
         if (sem_type == Type::string_type)
         {
             expr = d_new StringConstNode(lc->stringValue() + rc->stringValue());
-        }
-        else if (sem_type == Type::int_type)
+        } else if (sem_type == Type::int_type)
         {
             switch (op)
             {
@@ -527,8 +516,7 @@ ExprNode* ArithExprNode::semant(Environ* e)
             case MOD: expr = d_new IntConstNode(lc->intValue() % rc->intValue());
                 break;
             }
-        }
-        else
+        } else
         {
             switch (op)
             {
@@ -575,8 +563,7 @@ TNode* ArithExprNode::translate(Codegen* g)
             break;
         case MOD: return call("__bbMod", l, r);
         }
-    }
-    else
+    } else
     {
         switch (op)
         {
@@ -606,16 +593,13 @@ ExprNode* RelExprNode::semant(Environ* e)
     {
         if (op != '=' && op != NE) ex("Illegal operator for custom type objects");
         opType = lhs->sem_type != Type::null_type ? lhs->sem_type : rhs->sem_type;
-    }
-    else if (lhs->sem_type == Type::string_type || rhs->sem_type == Type::string_type)
+    } else if (lhs->sem_type == Type::string_type || rhs->sem_type == Type::string_type)
     {
         opType = Type::string_type;
-    }
-    else if (lhs->sem_type == Type::float_type || rhs->sem_type == Type::float_type)
+    } else if (lhs->sem_type == Type::float_type || rhs->sem_type == Type::float_type)
     {
         opType = Type::float_type;
-    }
-    else
+    } else
     {
         opType = Type::int_type;
     }
@@ -643,8 +627,7 @@ ExprNode* RelExprNode::semant(Environ* e)
             case GE: expr = d_new IntConstNode(lc->stringValue() >= rc->stringValue());
                 break;
             }
-        }
-        else if (opType == Type::float_type)
+        } else if (opType == Type::float_type)
         {
             switch (op)
             {
@@ -661,8 +644,7 @@ ExprNode* RelExprNode::semant(Environ* e)
             case GE: expr = d_new IntConstNode(lc->floatValue() >= rc->floatValue());
                 break;
             }
-        }
-        else
+        } else
         {
             switch (op)
             {

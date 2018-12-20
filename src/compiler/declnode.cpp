@@ -11,8 +11,7 @@ void DeclSeqNode::proto(DeclSeq* d, Environ* e)
         try
         {
             decls[k]->proto(d, e);
-        }
-        catch (Ex& x)
+        } catch (Ex& x)
         {
             if (x.pos < 0) x.pos = decls[k]->pos;
             if (!x.file.size()) x.file = decls[k]->file;
@@ -28,8 +27,7 @@ void DeclSeqNode::semant(Environ* e)
         try
         {
             decls[k]->semant(e);
-        }
-        catch (Ex& x)
+        } catch (Ex& x)
         {
             if (x.pos < 0) x.pos = decls[k]->pos;
             if (!x.file.size()) x.file = decls[k]->file;
@@ -45,8 +43,7 @@ void DeclSeqNode::translate(Codegen* g)
         try
         {
             decls[k]->translate(g);
-        }
-        catch (Ex& x)
+        } catch (Ex& x)
         {
             if (x.pos < 0) x.pos = decls[k]->pos;
             if (!x.file.size()) x.file = decls[k]->file;
@@ -62,8 +59,7 @@ void DeclSeqNode::transdata(Codegen* g)
         try
         {
             decls[k]->transdata(g);
-        }
-        catch (Ex& x)
+        } catch (Ex& x)
         {
             if (x.pos < 0) x.pos = decls[k]->pos;
             if (!x.file.size()) x.file = decls[k]->file;
@@ -101,8 +97,7 @@ void VarDeclNode::proto(DeclSeq* d, Environ* e)
             defType = ty->constType();
             ty = defType->valueType;
         }
-    }
-    else if (constant) ex("Constants must be initialized");
+    } else if (constant) ex("Constants must be initialized");
 
     Decl* decl = d->insertDecl(ident, ty, kind, defType);
     if (!decl) ex("Duplicate variable name");
@@ -273,14 +268,12 @@ void DataDeclNode::transdata(Codegen* g)
     {
         g->i_data(1);
         g->i_data(c->intValue());
-    }
-    else if (expr->sem_type == Type::float_type)
+    } else if (expr->sem_type == Type::float_type)
     {
         float n = c->floatValue();
         g->i_data(2);
         g->i_data(*(int*)&n);
-    }
-    else
+    } else
     {
         g->i_data(4);
         g->p_data(str_label);

@@ -118,8 +118,7 @@ static const char* linkRuntime()
                     string t = s.substr(from + 1, k - from - 1);
                     defType = d_new ConstType(t);
                     ++k;
-                }
-                else
+                } else
                 {
                     if (s[k] == '-') ++k;
                     for (; isdigit(s[k]); ++k) {}
@@ -127,8 +126,7 @@ static const char* linkRuntime()
                     {
                         int n = atoi(s.substr(from, k - from));
                         defType = d_new ConstType(n);
-                    }
-                    else
+                    } else
                     {
                         float n = (float)atof(s.substr(from, k - from));
                         defType = d_new ConstType(n);
@@ -166,14 +164,12 @@ static const char* loadUserLib(const string& userlib)
             {
                 if (bnext(in) != -2) return "expecting string after lib directive";
                 lib = text;
-            }
-            else
+            } else
             {
                 return "unknown decl directive";
             }
             bnext(in);
-        }
-        else if (curr == -1)
+        } else if (curr == -1)
         {
             if (!lib.size()) return "function decl without lib directive";
 
@@ -274,8 +270,7 @@ static const char* linkUserLibs()
             err = buf;
             break;
         }
-    }
-    while (FindNextFile(h, &fd));
+    } while (FindNextFile(h, &fd));
 
     FindClose(h);
 
@@ -297,7 +292,6 @@ const char* openLibs()
         (run_ver >> 16) != (bcc_ver >> 16) ||
         (lnk_ver >> 16) != (bcc_ver >> 16))
         return "Library version error";
-
 
     runtimeModule = linkerLib->createModule();
     runtimeEnviron = d_new Environ("", Type::int_type, 0, nullptr);

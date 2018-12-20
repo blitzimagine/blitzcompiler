@@ -265,7 +265,7 @@ int _cdecl main(int argc, char* argv[])
             out.flush();
             out.close();
         }
-        
+
         //assemble
         /*if (!veryquiet) cout << "Assembling..." << endl;
         module = linkerLib->createModule();

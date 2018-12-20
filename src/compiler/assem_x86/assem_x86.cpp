@@ -134,8 +134,7 @@ void Assem_x86::assemInst(const string& name, const string& lhs, const string& r
             static Inst jCC = {"jCC", IMM, NONE, RW_RD | PLUSCC, "\x2\x0F\x80"};
             inst = &jCC;
         }
-    }
-    else if (name[0] == 's' && name.substr(0, 3) == "set")
+    } else if (name[0] == 's' && name.substr(0, 3) == "set")
     {
         if ((cc = findCC(name.substr(3))) >= 0)
         {
@@ -147,8 +146,7 @@ void Assem_x86::assemInst(const string& name, const string& lhs, const string& r
     if (inst)
     {
         if (!(lop.mode & inst->lmode) || !(rop.mode & inst->rmode)) throw Ex("illegal addressing mode");
-    }
-    else
+    } else
     {
         InstIter it = instMap.find(name);
         if (it == instMap.end()) throw Ex("unrecognized instruction");
@@ -203,8 +201,7 @@ void Assem_x86::assemInst(const string& name, const string& lhs, const string& r
         {
             //reg
             emit(0xc0 | rm | mop.reg);
-        }
-        else if (mop.baseReg >= 0)
+        } else if (mop.baseReg >= 0)
         {
             //base, index?
             int mod = mop.offset ? 0x40 : 0x00;
@@ -215,8 +212,7 @@ void Assem_x86::assemInst(const string& name, const string& lhs, const string& r
                 //base, index!
                 emit(mod | rm | 4);
                 emit((mop.shift << 6) | (mop.indexReg << 3) | mop.baseReg);
-            }
-            else
+            } else
             {
                 //base, no index!
                 if (mop.baseReg != 4) emit(mod | rm | mop.baseReg);
@@ -233,8 +229,7 @@ void Assem_x86::assemInst(const string& name, const string& lhs, const string& r
                 a_reloc(mop.baseLabel);
                 emitd(mop.offset);
             }
-        }
-        else if (mop.indexReg >= 0)
+        } else if (mop.indexReg >= 0)
         {
             //index, no base!
             emit(rm | 4);
@@ -242,8 +237,7 @@ void Assem_x86::assemInst(const string& name, const string& lhs, const string& r
             //reloc
             a_reloc(mop.baseLabel);
             emitd(mop.offset);
-        }
-        else
+        } else
         {
             //[disp]
             emit(rm | 5);
@@ -263,13 +257,11 @@ void Assem_x86::assemInst(const string& name, const string& lhs, const string& r
     {
         if (lop.mode & IMM) emitImm(lop, 1);
         else emitImm(rop, 1);
-    }
-    else if (inst->flags & IW)
+    } else if (inst->flags & IW)
     {
         if (lop.mode & IMM) emitImm(lop, 2);
         else emitImm(rop, 2);
-    }
-    else if (inst->flags & ID)
+    } else if (inst->flags & ID)
     {
         if (lop.mode & IMM) emitImm(lop, 4);
         else emitImm(rop, 4);
@@ -288,23 +280,19 @@ void Assem_x86::assemDir(const string& name, const string& op)
             if (op.size() < 2 || op[op.size() - 1] != '\"') throw Ex("operand error");
             for (int k = 1; k < (int)op.size() - 1; ++k) emit(op[k]);
         }
-    }
-    else if (name == ".dw")
+    } else if (name == ".dw")
     {
         emitImm(op, 2);
-    }
-    else if (name == ".dd")
+    } else if (name == ".dd")
     {
         emitImm(op, 4);
-    }
-    else if (name == ".align")
+    } else if (name == ".align")
     {
         Operand o(op);
         o.parse();
         if (!(o.mode & IMM)) throw Ex("operand must be immediate");
         align(o.imm);
-    }
-    else
+    } else
     {
         throw Ex("unrecognized assembler directive");
     }
@@ -344,8 +332,7 @@ void Assem_x86::assemLine(const string& line)
         {
             for (++i; line[i] != '\"' && line[i] != '\n'; ++i) {}
             if (line[i++] != '\"') throw Ex("missing close quote");
-        }
-        else
+        } else
         {
             for (++i; line[i] != ',' && line[i] != ';' && line[i] != '\n'; ++i) {}
         }
@@ -392,8 +379,7 @@ void Assem_x86::assemble()
 #ifdef LOG
 			clog<<endl;
 #endif
-        }
-        catch (Ex& x)
+        } catch (Ex& x)
         {
             throw Ex(line + x.ex);
         }

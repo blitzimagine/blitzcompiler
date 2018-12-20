@@ -70,8 +70,9 @@ void ProgNode::translate(Codegen* g, const vector<UserFunc>& usrfuncs)
     //check labels
     for (k = 0; k < (int)sem_env->labels.size(); ++k)
     {
-        if (sem_env->labels[k]->def < 0) ex("Undefined label '" + sem_env->labels[k]->name + "'",
-                                            sem_env->labels[k]->ref, stmts->file);
+        if (sem_env->labels[k]->def < 0)
+            ex("Undefined label '" + sem_env->labels[k]->name + "'",
+               sem_env->labels[k]->ref, stmts->file);
     }
 
     //leave main program

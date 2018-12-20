@@ -31,8 +31,7 @@ void StmtSeqNode::semant(Environ* e)
         try
         {
             stmts[k]->semant(e);
-        }
-        catch (Ex& x)
+        } catch (Ex& x)
         {
             if (x.pos < 0) x.pos = stmts[k]->pos;
             if (!x.file.size()) x.file = file;
@@ -52,8 +51,7 @@ void StmtSeqNode::translate(Codegen* g)
         try
         {
             stmt->translate(g);
-        }
-        catch (Ex& x)
+        } catch (Ex& x)
         {
             if (x.pos < 0) x.pos = stmts[k]->pos;
             if (!x.file.size()) x.file = file;
@@ -110,8 +108,7 @@ void DimNode::semant(Environ* e)
         }
         sem_type = a;
         sem_decl = nullptr;
-    }
-    else
+    } else
     {
         if (e->level > 0) ex("Array not found in main program");
         if (!t) t = Type::int_type;
@@ -193,8 +190,7 @@ void LabelNode::semant(Environ* e)
         if (l->def >= 0) ex("duplicate label");
         l->def = pos;
         l->data_sz = data_sz;
-    }
-    else e->insertLabel(ident, pos, -1, data_sz);
+    } else e->insertLabel(ident, pos, -1, data_sz);
     ident = e->funcLabel + ident;
 }
 
@@ -274,8 +270,7 @@ void IfNode::translate(Codegen* g)
     {
         if (c->intValue()) stmts->translate(g);
         else if (elseOpt) elseOpt->translate(g);
-    }
-    else
+    } else
     {
         string _else = genLabel();
         g->code(jumpf(expr->translate(g), _else));
@@ -327,8 +322,7 @@ void WhileNode::translate(Codegen* g)
         g->label(loop);
         stmts->translate(g);
         g->code(jump(loop));
-    }
-    else
+    } else
     {
         string cond = genLabel();
         g->code(jump(cond));
@@ -437,8 +431,7 @@ void ForEachNode::translate(Codegen* g)
     {
         objFirst = "__bbObjEachFirst2";
         objNext = "__bbObjEachNext2";
-    }
-    else
+    } else
     {
         objFirst = "__bbObjEachFirst";
         objNext = "__bbObjEachNext";
@@ -475,16 +468,13 @@ void ReturnNode::semant(Environ* e)
             if (e->returnType == Type::float_type)
             {
                 expr = d_new FloatConstNode(0);
-            }
-            else if (e->returnType == Type::string_type)
+            } else if (e->returnType == Type::string_type)
             {
                 expr = d_new StringConstNode("");
-            }
-            else if (e->returnType->structType())
+            } else if (e->returnType->structType())
             {
                 expr = d_new NullNode();
-            }
-            else
+            } else
             {
                 expr = d_new IntConstNode(0);
             }
@@ -508,8 +498,7 @@ void ReturnNode::translate(Codegen* g)
     if (expr->sem_type == Type::float_type)
     {
         g->code(d_new TNode(IR_FRETURN, t, nullptr, returnLabel));
-    }
-    else
+    } else
     {
         g->code(d_new TNode(IR_RETURN, t, nullptr, returnLabel));
     }
@@ -649,8 +638,7 @@ void RepeatNode::translate(Codegen* g)
     if (ConstNode* c = expr ? expr->constNode() : nullptr)
     {
         if (!c->intValue()) g->code(jump(loop));
-    }
-    else
+    } else
     {
         if (expr) g->code(jumpf(expr->translate(g), loop));
         else g->code(jump(loop));

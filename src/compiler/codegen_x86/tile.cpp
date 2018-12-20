@@ -97,13 +97,11 @@ void Tile::label()
     if (!l)
     {
         need = 1;
-    }
-    else if (!r)
+    } else if (!r)
     {
         l->label();
         need = l->need;
-    }
-    else
+    } else
     {
         l->label();
         r->label();
@@ -145,12 +143,10 @@ int Tile::eval(int want)
     if (!l)
     {
         got_l = allocReg(want);
-    }
-    else if (!r)
+    } else if (!r)
     {
         got_l = l->eval(want);
-    }
-    else
+    } else
     {
         if (l->need >= NUM_REGS && r->need >= NUM_REGS)
         {
@@ -160,13 +156,11 @@ int Tile::eval(int want)
             got_l = l->eval(want);
             got_r = allocReg(want_r);
             popReg(got_r);
-        }
-        else if (r->need > l->need)
+        } else if (r->need > l->need)
         {
             got_r = r->eval(want_r);
             got_l = l->eval(want);
-        }
-        else
+        } else
         {
             got_l = l->eval(want);
             got_r = r->eval(want_r);
@@ -276,13 +270,11 @@ void Codegen_x86::leave(TNode* cleanup, int pop_sz)
         if (t[0] == '+')
         {
             esp_off += atoi(t.substr(1));
-        }
-        else if (t[0] == '-')
+        } else if (t[0] == '-')
         {
             //***** Still needed for STDCALL *****
             esp_off -= atoi(t.substr(1));
-        }
-        else
+        } else
         {
             if (esp_off)
             {

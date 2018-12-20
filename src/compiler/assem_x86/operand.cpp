@@ -32,18 +32,15 @@ bool Operand::parseSize(int* sz)
     {
         *sz = 1;
         s = s.substr(5);
-    }
-    else if (s.find("word ") == 0)
+    } else if (s.find("word ") == 0)
     {
         *sz = 2;
         s = s.substr(5);
-    }
-    else if (s.find("dword ") == 0)
+    } else if (s.find("dword ") == 0)
     {
         *sz = 4;
         s = s.substr(6);
-    }
-    else return false;
+    } else return false;
 
     return true;
 }
@@ -124,15 +121,13 @@ void Operand::parse()
                 mode |= REG8 | R_M8;
                 if (r == 0) mode |= AL;
                 else if (r == 1) mode |= CL;
-            }
-            else if (r < 16)
+            } else if (r < 16)
             {
                 if (sz && sz != 2) sizeError();
                 mode |= REG16 | R_M16;
                 if (r == 8) mode |= AX;
                 else if (r == 9) mode |= CX;
-            }
-            else
+            } else
             {
                 if (sz && sz != 4) sizeError();
                 mode |= REG32 | R_M32;
@@ -140,26 +135,22 @@ void Operand::parse()
                 else if (r == 17) mode |= ECX;
             }
             reg = r & 7;
-        }
-        else if (parseFPReg(&r))
+        } else if (parseFPReg(&r))
         {
             mode = FPUREG;
             if (!r) mode |= ST0;
             reg = r;
-        }
-        else if (parseLabel(&immLabel))
+        } else if (parseLabel(&immLabel))
         {
             if (sz && sz != 4) sizeError();
             mode = IMM | IMM32;
-        }
-        else if (parseConst(&imm))
+        } else if (parseConst(&imm))
         {
             mode = IMM;
             if (sz == 1) mode |= IMM8;
             else if (sz == 2) mode |= IMM16;
             else mode |= IMM32;
-        }
-        else opError();
+        } else opError();
         if (s.size()) opError();
         return;
     }
@@ -190,27 +181,22 @@ void Operand::parse()
                 else if (parseChar('8')) shift = 3;
                 else break;
                 indexReg = n;
-            }
-            else
+            } else
             {
                 if (baseReg < 0) baseReg = n;
                 else if (indexReg < 0)
                 {
                     indexReg = n;
-                }
-                else break;
+                } else break;
             }
-        }
-        else if (parseLabel(&l))
+        } else if (parseLabel(&l))
         {
             if (baseLabel.size()) opError();
             baseLabel = l;
-        }
-        else if (parseConst(&n))
+        } else if (parseConst(&n))
         {
             offset += n;
-        }
-        else break;
+        } else break;
         if (!s.size()) return;
     }
     opError();

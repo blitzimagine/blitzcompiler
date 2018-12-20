@@ -206,7 +206,6 @@ string ftoa(float n)
 
         //t = _ecvt(n, digits, &dec, &sign);
 
-
         char* tmp = new char[64];
         errno_t err = _ecvt_s(tmp, 64, n, digits, &dec, &sign);
         t = tmp;
@@ -215,7 +214,6 @@ string ftoa(float n)
         if (dec <= eNeg + 1 || dec > ePos)
         {
             _gcvt_s(buffer, 50, n, digits);
-
 
             t = buffer;
             return t;
@@ -228,12 +226,10 @@ string ftoa(float n)
         {
             t = "0." + string(-dec, '0') + t;
             dec = 1; // new location for decimal point
-        }
-        else if (dec < digits)
+        } else if (dec < digits)
         {
             t = t.substr(0, dec) + "." + t.substr(dec);
-        }
-        else
+        } else
         {
             t = t + string(dec - digits, '0') + ".0";
             dec += dec - digits;

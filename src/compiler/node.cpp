@@ -63,8 +63,7 @@ int Node::enumVars(Environ* e)
         {
             d->offset = p_size + 20;
             p_size += 4;
-        }
-        else if (d->kind & DECL_LOCAL)
+        } else if (d->kind & DECL_LOCAL)
         {
             d->offset = -4 - l_size;
             l_size += 4;
@@ -126,8 +125,7 @@ TNode* Node::deleteVars(Environ* e)
                 p1 = mem(local(d->offset));
                 p2 = nullptr;
             }
-        }
-        else if (type->structType())
+        } else if (type->structType())
         {
             if (d->kind == DECL_LOCAL)
             {
@@ -135,8 +133,7 @@ TNode* Node::deleteVars(Environ* e)
                 p1 = mem(local(d->offset));
                 p2 = nullptr;
             }
-        }
-        else if (VectorType* v = type->vectorType())
+        } else if (VectorType* v = type->vectorType())
         {
             if (d->kind == DECL_LOCAL)
             {
@@ -176,8 +173,7 @@ TNode* Node::compare(int op, TNode* l, TNode* r, Type* ty)
         case GE: n = IR_FSETGE;
             break;
         }
-    }
-    else
+    } else
     {
         switch (op)
         {
@@ -199,8 +195,7 @@ TNode* Node::compare(int op, TNode* l, TNode* r, Type* ty)
     {
         l = call("__bbStrCompare", l, r);
         r = d_new TNode(IR_CONST, nullptr, nullptr, 0);
-    }
-    else if (ty->structType())
+    } else if (ty->structType())
     {
         l = call("__bbObjCompare", l, r);
         r = d_new TNode(IR_CONST, nullptr, nullptr, 0);
@@ -218,8 +213,7 @@ Type* Node::tagType(const string& tag, Environ* e)
     {
         t = e->findType(tag);
         if (!t) ex("Type \"" + tag + "\" not found");
-    }
-    else t = nullptr;
+    } else t = nullptr;
     return t;
 }
 

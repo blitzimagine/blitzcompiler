@@ -4,7 +4,6 @@
 
 #include "../std.h"
 
-
 #include "insts.h"
 
 Inst insts[] = {
