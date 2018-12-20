@@ -30,291 +30,291 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\main.cpp">
+    <ClCompile Include="..\..\..\src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\basic.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\basic.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbaudio.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbaudio.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbbank.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbbank.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbblitz3d.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbblitz3d.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbfilesystem.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbfilesystem.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbgraphics.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbgraphics.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbinput.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbinput.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbmath.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbmath.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbruntime.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbruntime.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbsockets.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbsockets.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbstream.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbstream.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbstring.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbstring.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbsys.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbsys.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\multiplay.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\multiplay.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\runtime.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\runtime.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\std.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\std.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\userlib.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\userlib.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\userlibs.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\userlibs.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\assem_x86\asm_insts.cpp">
+    <ClCompile Include="..\..\..\src\compiler\assem_x86\asm_insts.cpp">
       <Filter>src\compiler\assem_x86</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\assem_x86\assem_x86.cpp">
+    <ClCompile Include="..\..\..\src\compiler\assem_x86\assem_x86.cpp">
       <Filter>src\compiler\assem_x86</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\assem_x86\operand.cpp">
+    <ClCompile Include="..\..\..\src\compiler\assem_x86\operand.cpp">
       <Filter>src\compiler\assem_x86</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\codegen_x86\tile.cpp">
+    <ClCompile Include="..\..\..\src\compiler\codegen_x86\tile.cpp">
       <Filter>src\compiler\codegen_x86</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\codegen_x86\codegen_x86.cpp">
+    <ClCompile Include="..\..\..\src\compiler\codegen_x86\codegen_x86.cpp">
       <Filter>src\compiler\codegen_x86</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\compiler.cpp">
+    <ClCompile Include="..\..\..\src\compiler\compiler.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\decl.cpp">
+    <ClCompile Include="..\..\..\src\compiler\decl.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\declnode.cpp">
+    <ClCompile Include="..\..\..\src\compiler\declnode.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\environ.cpp">
+    <ClCompile Include="..\..\..\src\compiler\environ.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\exprnode.cpp">
+    <ClCompile Include="..\..\..\src\compiler\exprnode.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\node.cpp">
+    <ClCompile Include="..\..\..\src\compiler\node.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\parser.cpp">
+    <ClCompile Include="..\..\..\src\compiler\parser.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\prognode.cpp">
+    <ClCompile Include="..\..\..\src\compiler\prognode.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\std.cpp">
+    <ClCompile Include="..\..\..\src\compiler\std.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\stmtnode.cpp">
+    <ClCompile Include="..\..\..\src\compiler\stmtnode.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\toker.cpp">
+    <ClCompile Include="..\..\..\src\compiler\toker.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\type.cpp">
+    <ClCompile Include="..\..\..\src\compiler\type.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compiler\varnode.cpp">
+    <ClCompile Include="..\..\..\src\compiler\varnode.cpp">
       <Filter>src\compiler</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\linker\dlltoexe.cpp">
+    <ClCompile Include="..\..\..\src\linker\dlltoexe.cpp">
       <Filter>src\linker</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\linker\image_util.cpp">
+    <ClCompile Include="..\..\..\src\linker\image_util.cpp">
       <Filter>src\linker</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\linker\linker.cpp">
+    <ClCompile Include="..\..\..\src\linker\linker.cpp">
       <Filter>src\linker</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\linker\std.cpp">
+    <ClCompile Include="..\..\..\src\linker\std.cpp">
       <Filter>src\linker</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\stdutil\stdutil.cpp">
+    <ClCompile Include="..\..\..\src\stdutil\stdutil.cpp">
       <Filter>src\stdutil</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\blitz\libs.cpp">
+    <ClCompile Include="..\..\..\src\blitz\libs.cpp">
       <Filter>src\blitz</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\bbruntime\bbruntime_dll.cpp">
+    <ClCompile Include="..\..\..\src\bbruntime\bbruntime_dll.cpp">
       <Filter>src\bbruntime</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\bbruntime\basic.h">
+    <ClInclude Include="..\..\..\src\bbruntime\basic.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bb_basic.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bb_basic.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbaudio.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbaudio.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbbank.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbbank.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbblitz3d.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbblitz3d.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbfilesystem.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbfilesystem.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbgraphics.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbgraphics.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbinput.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbinput.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbmath.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbmath.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbruntime.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbruntime.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbsockets.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbsockets.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbstream.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbstream.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbstring.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbstring.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbsys.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbsys.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\multiplay.h">
+    <ClInclude Include="..\..\..\src\bbruntime\multiplay.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\std.h">
+    <ClInclude Include="..\..\..\src\bbruntime\std.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\userlib.h">
+    <ClInclude Include="..\..\..\src\bbruntime\userlib.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\userlibs.h">
+    <ClInclude Include="..\..\..\src\bbruntime\userlibs.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\assem_x86\assem_x86.h">
+    <ClInclude Include="..\..\..\src\compiler\assem_x86\assem_x86.h">
       <Filter>src\compiler\assem_x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\assem_x86\insts.h">
+    <ClInclude Include="..\..\..\src\compiler\assem_x86\insts.h">
       <Filter>src\compiler\assem_x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\assem_x86\operand.h">
+    <ClInclude Include="..\..\..\src\compiler\assem_x86\operand.h">
       <Filter>src\compiler\assem_x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\codegen_x86\codegen_x86.h">
+    <ClInclude Include="..\..\..\src\compiler\codegen_x86\codegen_x86.h">
       <Filter>src\compiler\codegen_x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\codegen_x86\tile.h">
+    <ClInclude Include="..\..\..\src\compiler\codegen_x86\tile.h">
       <Filter>src\compiler\codegen_x86</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\codegen.h">
+    <ClInclude Include="..\..\..\src\compiler\codegen.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\compiler.h">
+    <ClInclude Include="..\..\..\src\compiler\compiler.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\decl.h">
+    <ClInclude Include="..\..\..\src\compiler\decl.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\declnode.h">
+    <ClInclude Include="..\..\..\src\compiler\declnode.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\environ.h">
+    <ClInclude Include="..\..\..\src\compiler\environ.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\ex.h">
+    <ClInclude Include="..\..\..\src\compiler\ex.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\exprnode.h">
+    <ClInclude Include="..\..\..\src\compiler\exprnode.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\label.h">
+    <ClInclude Include="..\..\..\src\compiler\label.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\node.h">
+    <ClInclude Include="..\..\..\src\compiler\node.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\nodes.h">
+    <ClInclude Include="..\..\..\src\compiler\nodes.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\parser.h">
+    <ClInclude Include="..\..\..\src\compiler\parser.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\prognode.h">
+    <ClInclude Include="..\..\..\src\compiler\prognode.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\std.h">
+    <ClInclude Include="..\..\..\src\compiler\std.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\stmtnode.h">
+    <ClInclude Include="..\..\..\src\compiler\stmtnode.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\stringmap.h">
+    <ClInclude Include="..\..\..\src\compiler\stringmap.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\toker.h">
+    <ClInclude Include="..\..\..\src\compiler\toker.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\type.h">
+    <ClInclude Include="..\..\..\src\compiler\type.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\var.h">
+    <ClInclude Include="..\..\..\src\compiler\var.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\varnode.h">
+    <ClInclude Include="..\..\..\src\compiler\varnode.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\compiler\assem.h">
+    <ClInclude Include="..\..\..\src\compiler\assem.h">
       <Filter>src\compiler</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\config\config.h">
+    <ClInclude Include="..\..\..\src\config\config.h">
       <Filter>src\config</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\linker\dlltoexe.h">
+    <ClInclude Include="..\..\..\src\linker\dlltoexe.h">
       <Filter>src\linker</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\linker\image_util.h">
+    <ClInclude Include="..\..\..\src\linker\image_util.h">
       <Filter>src\linker</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\linker\linker.h">
+    <ClInclude Include="..\..\..\src\linker\linker.h">
       <Filter>src\linker</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\linker\std.h">
+    <ClInclude Include="..\..\..\src\linker\std.h">
       <Filter>src\linker</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\stdutil\stdutil.h">
+    <ClInclude Include="..\..\..\src\stdutil\stdutil.h">
       <Filter>src\stdutil</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\blitz\libs.h">
+    <ClInclude Include="..\..\..\src\blitz\libs.h">
       <Filter>src\blitz</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\bbruntime_dll.h">
+    <ClInclude Include="..\..\..\src\bbruntime\bbruntime_dll.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
   </ItemGroup>
