@@ -31,7 +31,7 @@ static void showInfo()
 
 static void showUsage()
 {
-    cout << "Usage: blitzcc [-h|-q|+q|-c|-d|-k|+k|-v|-o exefile] [sourcefile.bb]" << endl;
+    cout << "Usage: blitzcc [-h|-q|+q|-c|-d|-k|+k|-v|-o output] [sourcefile.bb]" << endl;
 }
 
 static void showHelp()
