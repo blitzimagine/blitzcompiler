@@ -81,7 +81,6 @@
     <ClInclude Include="..\src\bbruntime\bbsys.h" />
     <ClInclude Include="..\src\bbruntime\bb_basic.h" />
     <ClInclude Include="..\src\bbruntime\multiplay.h" />
-    <ClInclude Include="..\src\bbruntime\resource.h" />
     <ClInclude Include="..\src\bbruntime\std.h" />
     <ClInclude Include="..\src\bbruntime\userlib.h" />
     <ClInclude Include="..\src\bbruntime\userlibs.h" />

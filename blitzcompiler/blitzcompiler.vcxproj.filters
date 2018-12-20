@@ -209,9 +209,6 @@
     <ClInclude Include="..\src\bbruntime\multiplay.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\bbruntime\resource.h">
-      <Filter>src\bbruntime</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\bbruntime\std.h">
       <Filter>src\bbruntime</Filter>
     </ClInclude>
