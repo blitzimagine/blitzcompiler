@@ -2,7 +2,7 @@
 #include "bbbank.h"
 #include "bbstream.h"
 
-void bank_link(void(*rtSym)(std::string sym))
+void bank_link(void (*rtSym)(std::string sym))
 {
     rtSym("%CreateBank%size=0");
     rtSym("FreeBank%bank");

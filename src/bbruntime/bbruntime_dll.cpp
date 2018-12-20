@@ -44,12 +44,13 @@ const char* Runtime::nextSym()
     if (sym_it == syms.end())
     {
         //syms.clear();
-        return 0;
+        return nullptr;
     }
     return (sym_it++)->c_str();
 }
 
-int Runtime::symValue(const char *sym) {
+int Runtime::symValue(const char* sym)
+{
     return -1;
 }
 

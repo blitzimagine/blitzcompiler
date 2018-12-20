@@ -65,7 +65,7 @@ static string quickHelp(const string& kw)
 {
     Environ* e = runtimeEnviron;
     Decl* d = e->funcDecls->findDecl(tolower(kw));
-    if (!d || d->type->funcType() == 0) return "No quick help available for " + kw;
+    if (!d || d->type->funcType() == nullptr) return "No quick help available for " + kw;
     string t = kw;
     FuncType* f = d->type->funcType();
     if (f->returnType == Type::float_type) t += '#';
@@ -247,9 +247,9 @@ int _cdecl main(int argc, char* argv[])
         SetCurrentDirectory(in_file.substr(0, n).c_str());
     }
 
-    ProgNode* prog = 0;
-    Environ* environ_ = 0;
-    Module* module = 0;
+    ProgNode* prog = nullptr;
+    Environ* environ_ = nullptr;
+    Module* module = nullptr;
 
     try
     {

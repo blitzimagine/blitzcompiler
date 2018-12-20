@@ -1,4 +1,3 @@
-
 #ifndef LIBS_H
 #define LIBS_H
 
@@ -19,17 +18,17 @@ extern int run_ver;
 extern int dbg_ver;
 
 //openLibs
-extern Linker *linkerLib;
+extern Linker* linkerLib;
 
 //linkLibs
-extern Module *runtimeModule;
-extern Environ *runtimeEnviron;
+extern Module* runtimeModule;
+extern Environ* runtimeEnviron;
 extern vector<string> keyWords;
 extern vector<UserFunc> userFuncs;
 
-const char *openLibs();
+const char* openLibs();
 
-const char *linkLibs();
+const char* linkLibs();
 
 void closeLibs();
 

@@ -108,7 +108,7 @@ static const char* linkRuntime()
             int from = k;
             for (; isalnum(s[k]) || s[k] == '_'; ++k) {}
             string str = s.substr(from, k - from);
-            ConstType* defType = 0;
+            ConstType* defType = nullptr;
             if (s[k] == '=')
             {
                 int from = ++k;
@@ -143,7 +143,7 @@ static const char* linkRuntime()
         runtimeEnviron->funcDecls->insertDecl(n, f, DECL_FUNC);
         runtimeModule->addSymbol(("_f" + n).c_str(), pc);
     }
-    return 0;
+    return nullptr;
 }
 
 static set<string> _ulibkws;
@@ -183,7 +183,7 @@ static const char* loadUserLib(const string& userlib)
             if (_ulibkws.count(lower_id)) return "duplicate identifier";
             _ulibkws.insert(lower_id);
 
-            Type* ty = 0;
+            Type* ty = nullptr;
             switch (bnext(in))
             {
             case '%': ty = Type::int_type;
@@ -207,7 +207,7 @@ static const char* loadUserLib(const string& userlib)
                     if (curr != -1) break;
                     string arg = text;
 
-                    Type* ty = 0;
+                    Type* ty = nullptr;
                     switch (bnext(in))
                     {
                     case '%': ty = Type::int_type;
@@ -222,7 +222,7 @@ static const char* loadUserLib(const string& userlib)
                     if (ty) bnext(in);
                     else ty = Type::int_type;
 
-                    ConstType* defType = 0;
+                    ConstType* defType = nullptr;
 
                     Decl* d = params->insertDecl(arg, ty, DECL_PARAM, defType);
 
@@ -250,7 +250,7 @@ static const char* loadUserLib(const string& userlib)
             userFuncs.push_back(UserFunc(lower_id, id, lib));
         }
     }
-    return 0;
+    return nullptr;
 }
 
 static const char* linkUserLibs()
@@ -261,9 +261,9 @@ static const char* linkUserLibs()
 
     HANDLE h = FindFirstFile("userlibs/*.decls", &fd);
 
-    if (h == INVALID_HANDLE_VALUE) return 0;
+    if (h == INVALID_HANDLE_VALUE) return nullptr;
 
-    const char* err = 0;
+    const char* err = nullptr;
 
     do
     {
@@ -300,12 +300,12 @@ const char* openLibs()
 
 
     runtimeModule = linkerLib->createModule();
-    runtimeEnviron = d_new Environ("", Type::int_type, 0, 0);
+    runtimeEnviron = d_new Environ("", Type::int_type, 0, nullptr);
 
     keyWords.clear();
     userFuncs.clear();
 
-    return 0;
+    return nullptr;
 }
 
 const char* linkLibs()
@@ -314,7 +314,7 @@ const char* linkLibs()
 
     if (const char* p = linkUserLibs()) return p;
 
-    return 0;
+    return nullptr;
 }
 
 void closeLibs()
@@ -323,6 +323,6 @@ void closeLibs()
     if (linkerLib) linkerLib->deleteModule(runtimeModule);
     if (runtimeLib) runtimeLib->shutdown();
 
-    runtimeEnviron = 0;
-    linkerLib = 0;
+    runtimeEnviron = nullptr;
+    linkerLib = nullptr;
 }

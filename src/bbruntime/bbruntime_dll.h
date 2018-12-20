@@ -12,7 +12,7 @@ class Runtime
 public:
     virtual int version();
     virtual const char* nextSym();
-    virtual int symValue(const char *sym);
+    virtual int symValue(const char* sym);
     virtual void shutdown();
     virtual void checkmem(std::streambuf* buf);
 };

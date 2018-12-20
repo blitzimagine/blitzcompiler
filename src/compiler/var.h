@@ -1,15 +1,14 @@
-
 #ifndef VAR_H
 #define VAR_H
 
 struct Type;
 
-struct Var{
+struct Var
+{
+    int index;
+    Type* type;
 
-	int index;
-	Type *type;
-
-	Var( int i,Type *t ):index(i),type(t){}
+    Var(int i, Type* t): index(i), type(t) {}
 };
 
 #endif
