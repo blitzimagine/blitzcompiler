@@ -39,23 +39,24 @@ static void showHelp()
     showUsage();
     cout << "-h         : show this help" << endl;
     cout << "-q         : quiet mode" << endl;
-    cout << "+q		    : very quiet mode" << endl;
+    cout << "+q         : very quiet mode" << endl;
     cout << "-d         : debug compile" << endl;
     cout << "-k         : dump keywords" << endl;
     cout << "+k         : dump keywords and syntax" << endl;
-    cout << "-v		    : version info" << endl;
-    cout << "-o exefile : generate executable" << endl;
+    cout << "-v         : version info" << endl;
+    cout << "-o         : output file" << endl;
 }
 
 static void err(const string& t)
 {
-    cout << t << endl;
+    cerr << t << endl;
     exit(-1);
 }
 
-static void usageErr()
+static void usageError()
 {
-    err("Usage error");
+    showUsage();
+    exit(-1);
 }
 
 static string quickHelp(const string& kw)
@@ -141,10 +142,13 @@ static void versInfo()
 
 int _cdecl main(int argc, char* argv[])
 {
+    if (argc == 1)
+        usageError();
+
     string in_file, out_file, args;
 
     bool debug = false, quiet = false, veryquiet = false;
-    bool dumpkeys = false, dumphelp = false, showhelp = false, dumpasm = false;
+    bool dumpkeys = false, dumphelp = false, showhelp = false;
     bool versinfo = false;
 
     for (int k = 1; k < argc; ++k)
@@ -156,9 +160,6 @@ int _cdecl main(int argc, char* argv[])
         if (t == "-h")
         {
             showhelp = true;
-        } else if (t == "-a")
-        {
-            dumpasm = true;
         } else if (t == "-q")
         {
             quiet = true;
@@ -179,11 +180,11 @@ int _cdecl main(int argc, char* argv[])
             versinfo = true;
         } else if (t == "-o")
         {
-            if (!out_file.empty() || k == argc - 1) usageErr();
+            if (!out_file.empty() || k == argc - 1) usageError();
             out_file = argv[++k];
         } else
         {
-            if (!in_file.empty() || t[0] == '-' || t[0] == '+') usageErr();
+            if (!in_file.empty() || t[0] == '-' || t[0] == '+') usageError();
             in_file = argv[k];
             for (++k; k < argc; ++k)
             {
@@ -195,8 +196,6 @@ int _cdecl main(int argc, char* argv[])
         }
     }
 
-    if (!out_file.empty() && in_file.empty()) usageErr();
-
     if (showhelp) showHelp();
     if (dumpkeys) dumpKeys(true, true, dumphelp);
     if (versinfo) versInfo();
@@ -205,7 +204,7 @@ int _cdecl main(int argc, char* argv[])
 
     if (in_file[0] == '\"')
     {
-        if (in_file.size() < 3 || in_file[in_file.size() - 1] != '\"') usageErr();
+        if (in_file.size() < 3 || in_file[in_file.size() - 1] != '\"') usageError();
         in_file = in_file.substr(1, in_file.size() - 2);
     }
 
@@ -249,16 +248,29 @@ int _cdecl main(int argc, char* argv[])
 
         prog->translate(&codegen, userFuncs);
 
-        if (dumpasm)
+        std::string asmCodeStr(qbuf.data(), qbuf.size());
+        if (out_file.empty())
         {
-            cout << endl << string(qbuf.data(), qbuf.size()) << endl;
+            cout << endl << asmCodeStr << endl;
+        } else
+        {
+            std::ofstream out(out_file, std::ios::out);
+            if (out.fail())
+            {
+                err("Failed to open '" + out_file + "' for writing");
+            } else
+            {
+                out.write(asmCodeStr.c_str(), asmCodeStr.length());
+            }
+            out.flush();
+            out.close();
         }
-
+        
         //assemble
-        if (!veryquiet) cout << "Assembling..." << endl;
+        /*if (!veryquiet) cout << "Assembling..." << endl;
         module = linkerLib->createModule();
         Assem_x86 assem(asmcode, module);
-        assem.assemble();
+        assem.assemble();*/
     } catch (Ex& x)
     {
         string file = '\"' + x.file + '\"';
@@ -268,11 +280,6 @@ int _cdecl main(int argc, char* argv[])
     }
 
     delete prog;
-
-    if (!out_file.empty())
-    {
-        // TODO: Write output
-    }
 
     delete module;
     delete environ_;
