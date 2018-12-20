@@ -1,7 +1,7 @@
 #include "libs.h"
 
 #include <Windows.h>
-#include "../bbruntime/bbruntime_dll.h"
+#include "../bbruntime/bbruntime.h"
 
 int bcc_ver;
 int lnk_ver;
@@ -171,7 +171,7 @@ static const char* loadUserLib(const string& userlib)
             bnext(in);
         } else if (curr == -1)
         {
-            if (!lib.size()) return "function decl without lib directive";
+            if (lib.empty()) return "function decl without lib directive";
 
             string id = text;
             string lower_id = tolower(id);

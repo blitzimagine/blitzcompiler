@@ -19,7 +19,6 @@ using namespace std;
 #include "linker/linker.h"
 #include "compiler/environ.h"
 #include "compiler/parser.h"
-#include "compiler/assem_x86/assem_x86.h"
 #include "compiler/codegen_x86/codegen_x86.h"
 
 static void showInfo()
@@ -196,6 +195,12 @@ int _cdecl main(int argc, char* argv[])
         }
     }
 
+    if (const char* er = openLibs())
+        err(er);
+
+    if (const char* er = linkLibs())
+        err(er);
+
     if (showhelp) showHelp();
     if (dumpkeys) dumpKeys(true, true, dumphelp);
     if (versinfo) versInfo();
@@ -220,8 +225,10 @@ int _cdecl main(int argc, char* argv[])
     if (n == string::npos) n = in_file.rfind('\\');
     if (n != string::npos)
     {
-        if (!n || in_file[n - 1] == ':') ++n;
-        SetCurrentDirectory(in_file.substr(0, n).c_str());
+        if (!n || in_file[n - 1] == ':')
+            ++n;
+
+        setCurrentDirectory(in_file.substr(0, n));
     }
 
     ProgNode* prog = nullptr;
@@ -265,12 +272,6 @@ int _cdecl main(int argc, char* argv[])
             out.flush();
             out.close();
         }
-
-        //assemble
-        /*if (!veryquiet) cout << "Assembling..." << endl;
-        module = linkerLib->createModule();
-        Assem_x86 assem(asmcode, module);
-        assem.assemble();*/
     } catch (Ex& x)
     {
         string file = '\"' + x.file + '\"';

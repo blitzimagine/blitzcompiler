@@ -1,12 +1,12 @@
-#include "../std.h"
+#include "../../stdutil/std.h"
 #include "codegen_x86.h"
 #include "tile.h"
 
 //#define NOOPTS
 
-Codegen_x86::Codegen_x86(ostream& out, bool debug): Codegen(out, debug), inCode(false) {}
+Codegen_x86::Codegen_x86(std::ostream& out, bool debug): Codegen(out, debug), inCode(false) {}
 
-static string itoa_sgn(int n)
+static std::string itoa_sgn(int n)
 {
     return n ? (n > 0 ? "+" + itoa(n) : itoa(n)) : "";
 }
@@ -49,7 +49,7 @@ static bool getShift(int n, int& shift)
     return false;
 }
 
-static bool matchMEM(TNode* t, string& s)
+static bool matchMEM(TNode* t, std::string& s)
 {
 #ifdef NOOPTS
 	return false;
@@ -69,7 +69,7 @@ static bool matchMEM(TNode* t, string& s)
     return false;
 }
 
-static bool matchCONST(TNode* t, string& s)
+static bool matchCONST(TNode* t, std::string& s)
 {
 #ifdef NOOPTS
 	return false;
@@ -85,7 +85,7 @@ static bool matchCONST(TNode* t, string& s)
     return false;
 }
 
-static bool matchMEMCONST(TNode* t, string& s)
+static bool matchMEMCONST(TNode* t, std::string& s)
 {
 #ifdef NOOPTS
 	return false;
@@ -94,7 +94,7 @@ static bool matchMEMCONST(TNode* t, string& s)
     return matchMEM(t, s) || matchCONST(t, s);
 }
 
-Tile* Codegen_x86::genCompare(TNode* t, string& func, bool negate)
+Tile* Codegen_x86::genCompare(TNode* t, std::string& func, bool negate)
 {
     switch (t->op)
     {
@@ -113,7 +113,7 @@ Tile* Codegen_x86::genCompare(TNode* t, string& func, bool negate)
     default: return nullptr;
     }
 
-    string q, m, c;
+    std::string q, m, c;
     TNode *ql = nullptr, *qr = nullptr;
 
     if (matchMEM(t->l, m))
@@ -148,7 +148,7 @@ Tile* Codegen_x86::genCompare(TNode* t, string& func, bool negate)
 ////////////////////////////////////////////////
 Tile* Codegen_x86::munchUnary(TNode* t)
 {
-    string s;
+    std::string s;
     switch (t->op)
     {
     case IR_NEG: s = "\tneg\t%l\n";
@@ -160,7 +160,7 @@ Tile* Codegen_x86::munchUnary(TNode* t)
 
 Tile* Codegen_x86::munchLogical(TNode* t)
 {
-    string s;
+    std::string s;
     switch (t->op)
     {
     case IR_AND: s = "\tand\t%l,%r\n";
@@ -211,7 +211,7 @@ Tile* Codegen_x86::munchArith(TNode* t)
         }
     }
 
-    string s, op;
+    std::string s, op;
     switch (t->op)
     {
     case IR_ADD: op = "\tadd\t";
@@ -236,7 +236,7 @@ Tile* Codegen_x86::munchArith(TNode* t)
 
 Tile* Codegen_x86::munchShift(TNode* t)
 {
-    string s, op;
+    std::string s, op;
     switch (t->op)
     {
     case IR_SHL: op = "\tshl\t";
@@ -260,7 +260,7 @@ Tile* Codegen_x86::munchShift(TNode* t)
 
 Tile* Codegen_x86::munchRelop(TNode* t)
 {
-    string func;
+    std::string func;
     Tile* q = genCompare(t, func, false);
 
     q = d_new Tile("\tset" + func + "\tal\n\tmovzx\teax,al\n", q);
@@ -273,7 +273,7 @@ Tile* Codegen_x86::munchRelop(TNode* t)
 ////////////////////////////////////////////////
 Tile* Codegen_x86::munchFPUnary(TNode* t)
 {
-    string s;
+    std::string s;
     switch (t->op)
     {
     case IR_FNEG: s = "\tfchs\n";
@@ -285,7 +285,7 @@ Tile* Codegen_x86::munchFPUnary(TNode* t)
 
 Tile* Codegen_x86::munchFPArith(TNode* t)
 {
-    string s, s2;
+    std::string s, s2;
     switch (t->op)
     {
     case IR_FADD: s = "\tfaddp\tst(1)\n";
@@ -305,7 +305,7 @@ Tile* Codegen_x86::munchFPArith(TNode* t)
 
 Tile* Codegen_x86::munchFPRelop(TNode* t)
 {
-    string s, s2;
+    std::string s, s2;
     switch (t->op)
     {
     case IR_FSETEQ: s = "z";
@@ -361,7 +361,7 @@ Tile* Codegen_x86::munch(TNode* t)
 {
     if (!t) return nullptr;
     Tile* q = nullptr;
-    string s;
+    std::string s;
     switch (t->op)
     {
     case IR_JSR:
@@ -393,7 +393,7 @@ Tile* Codegen_x86::munch(TNode* t)
             bool neg = false;
             if (isRelop(p->op))
             {
-                string func;
+                std::string func;
                 q = genCompare(p, func, neg);
                 q = d_new Tile("\tj" + func + "\t" + t->sconst + "\n", q);
             }
@@ -405,7 +405,7 @@ Tile* Codegen_x86::munch(TNode* t)
             bool neg = true;
             if (isRelop(p->op))
             {
-                string func;
+                std::string func;
                 q = genCompare(p, func, neg);
                 q = d_new Tile("\tj" + func + "\t" + t->sconst + "\n", q);
             }
@@ -414,7 +414,7 @@ Tile* Codegen_x86::munch(TNode* t)
     case IR_MOVE:
         if (matchMEM(t->r, s))
         {
-            string c;
+            std::string c;
             if (matchCONST(t->l, c))
             {
                 q = d_new Tile("\tmov\t" + s + "," + c + "\n");
@@ -425,7 +425,7 @@ Tile* Codegen_x86::munch(TNode* t)
                 else if (t->l->op == IR_ADD && nodesEqual(t->l->r, t->r)) p = t->l->l;
                 if (p)
                 {
-                    string c, op;
+                    std::string c, op;
                     switch (t->l->op)
                     {
                     case IR_ADD: op = "\tadd\t";
@@ -457,7 +457,7 @@ Tile* Codegen_x86::munchReg(TNode* t)
 {
     if (!t) return nullptr;
 
-    string s;
+    std::string s;
     Tile* q = nullptr;
 
     switch (t->op)
@@ -503,7 +503,7 @@ Tile* Codegen_x86::munchReg(TNode* t)
         q = d_new Tile("\tlea\t%l,[ebp" + itoa_sgn(t->iconst) + "]\n");
         break;
     case IR_GLOBAL:
-        q = d_new Tile(string("\tmov\t%l,") + t->sconst + '\n');
+        q = d_new Tile(std::string("\tmov\t%l,") + t->sconst + '\n');
         break;
     case IR_CAST:
         q = munchFP(t->l);
@@ -547,7 +547,7 @@ Tile* Codegen_x86::munchFP(TNode* t)
 {
     if (!t) return nullptr;
 
-    string s;
+    std::string s;
     Tile* q = nullptr;
 
     switch (t->op)

@@ -5,7 +5,7 @@
 
 inline void debugError(const char* e)
 {
-    std::cerr << "Error: " << e << endl;
+    std::cerr << "Error: " << e << std::endl;
     exit(1);
 }
 

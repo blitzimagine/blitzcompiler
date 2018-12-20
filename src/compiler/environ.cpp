@@ -1,7 +1,7 @@
-#include "std.h"
+#include "../stdutil/std.h"
 #include "environ.h"
 
-Environ::Environ(const string& f, Type* r, int l, Environ* gs)
+Environ::Environ(const std::string& f, Type* r, int l, Environ* gs)
     : level(l), globals(gs), returnType(r), funcLabel(f)
 {
     decls = d_new DeclSeq();
@@ -13,8 +13,8 @@ Environ::Environ(const string& f, Type* r, int l, Environ* gs)
 Environ::~Environ()
 {
     if (globals) globals->children.remove(this);
-    while (children.size()) delete children.back();
-    for (; labels.size(); labels.pop_back()) delete labels.back();
+    while (!children.empty()) delete children.back();
+    for (; !labels.empty(); labels.pop_back()) delete labels.back();
 
     //delete all types
     delete decls;
@@ -24,7 +24,7 @@ Environ::~Environ()
     for (int k = 0; k < (int)types.size(); ++k) delete types[k];
 }
 
-Decl* Environ::findDecl(const string& s)
+Decl* Environ::findDecl(const std::string& s)
 {
     for (Environ* e = this; e; e = e->globals)
     {
@@ -39,7 +39,7 @@ Decl* Environ::findDecl(const string& s)
     return nullptr;
 }
 
-Decl* Environ::findFunc(const string& s)
+Decl* Environ::findFunc(const std::string& s)
 {
     for (Environ* e = this; e; e = e->globals)
     {
@@ -48,7 +48,7 @@ Decl* Environ::findFunc(const string& s)
     return nullptr;
 }
 
-Type* Environ::findType(const string& s)
+Type* Environ::findType(const std::string& s)
 {
     if (s == "%") return Type::int_type;
     if (s == "#") return Type::float_type;
@@ -60,22 +60,22 @@ Type* Environ::findType(const string& s)
     return nullptr;
 }
 
-Label* Environ::findLabel(const string& s)
+Label* Environ::findLabel(const std::string& s)
 {
     for (int k = 0; k < (int)labels.size(); ++k) if (labels[k]->name == s) return labels[k];
     return nullptr;
 }
 
-Label* Environ::insertLabel(const string& s, int def, int src, int sz)
+Label* Environ::insertLabel(const std::string& s, int def, int src, int sz)
 {
     Label* l = d_new Label(s, def, src, sz);
     labels.push_back(l);
     return l;
 }
 
-string Environ::setBreak(const string& s)
+std::string Environ::setBreak(const std::string& s)
 {
-    string t = breakLabel;
+    std::string t = breakLabel;
     breakLabel = s;
     return t;
 }

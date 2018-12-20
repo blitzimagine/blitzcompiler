@@ -4,7 +4,7 @@
 struct DeclNode : public Node
 {
     int pos;
-    string file;
+    std::string file;
     DeclNode(): pos(-1) {}
     virtual void proto(DeclSeq* d, Environ* e) {}
     virtual void semant(Environ* e) {}
@@ -14,12 +14,12 @@ struct DeclNode : public Node
 
 struct DeclSeqNode : public Node
 {
-    vector<DeclNode*> decls;
+    std::vector<DeclNode*> decls;
     DeclSeqNode() {}
 
     ~DeclSeqNode()
     {
-        for (; decls.size(); decls.pop_back())delete decls.back();
+        for (; !decls.empty(); decls.pop_back())delete decls.back();
     }
 
     void proto(DeclSeq* d, Environ* e);
@@ -45,13 +45,13 @@ struct DeclSeqNode : public Node
 //should probably be LocalDeclNode,GlobalDeclNode,ParamDeclNode
 struct VarDeclNode : public DeclNode
 {
-    string ident, tag;
+    std::string ident, tag;
     int kind;
     bool constant;
     ExprNode* expr;
     DeclVarNode* sem_var;
 
-    VarDeclNode(const string& i, const string& t, int k, bool c, ExprNode* e): ident(i), tag(t), kind(k), constant(c),
+    VarDeclNode(const std::string& i, const std::string& t, int k, bool c, ExprNode* e): ident(i), tag(t), kind(k), constant(c),
                                                                                expr(e), sem_var(nullptr) {}
 
     ~VarDeclNode()
@@ -67,13 +67,13 @@ struct VarDeclNode : public DeclNode
 
 struct FuncDeclNode : public DeclNode
 {
-    string ident, tag;
+    std::string ident, tag;
     DeclSeqNode* params;
     StmtSeqNode* stmts;
     FuncType* sem_type;
     Environ* sem_env;
 
-    FuncDeclNode(const string& i, const string& t, DeclSeqNode* p, StmtSeqNode* ss): ident(i), tag(t), params(p),
+    FuncDeclNode(const std::string& i, const std::string& t, DeclSeqNode* p, StmtSeqNode* ss): ident(i), tag(t), params(p),
                                                                                      stmts(ss) {}
 
     ~FuncDeclNode()
@@ -89,10 +89,10 @@ struct FuncDeclNode : public DeclNode
 
 struct StructDeclNode : public DeclNode
 {
-    string ident;
+    std::string ident;
     DeclSeqNode* fields;
     StructType* sem_type;
-    StructDeclNode(const string& i, DeclSeqNode* f): ident(i), fields(f) {}
+    StructDeclNode(const std::string& i, DeclSeqNode* f): ident(i), fields(f) {}
 
     ~StructDeclNode()
     {
@@ -107,7 +107,7 @@ struct StructDeclNode : public DeclNode
 struct DataDeclNode : public DeclNode
 {
     ExprNode* expr;
-    string str_label;
+    std::string str_label;
     DataDeclNode(ExprNode* e): expr(e) {}
 
     ~DataDeclNode()
@@ -123,11 +123,11 @@ struct DataDeclNode : public DeclNode
 
 struct VectorDeclNode : public DeclNode
 {
-    string ident, tag;
+    std::string ident, tag;
     ExprSeqNode* exprs;
     int kind;
     VectorType* sem_type;
-    VectorDeclNode(const string& i, const string& t, ExprSeqNode* e, int k): ident(i), tag(t), exprs(e), kind(k) {}
+    VectorDeclNode(const std::string& i, const std::string& t, ExprSeqNode* e, int k): ident(i), tag(t), exprs(e), kind(k) {}
 
     ~VectorDeclNode()
     {

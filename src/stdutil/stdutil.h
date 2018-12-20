@@ -1,33 +1,9 @@
-#ifndef STDUTIL_H
-#define STDUTIL_H
-
-#pragma warning(disable:4786)
-
-#include "../config/config.h"
+#pragma once
 
 #include <string>
 #include <iostream>
 
-#ifdef MEMDEBUG
-
-void * _cdecl operator new( size_t size );
-void * _cdecl operator new[]( size_t size );
-void * _cdecl operator new( size_t size,const char *file,int line );
-void * _cdecl operator new[]( size_t size,const char *file,int line );
-void _cdecl operator delete( void *q );
-void _cdecl operator delete[]( void *q );
-void _cdecl operator delete( void *q,const char *file,int line );
-void _cdecl operator delete[]( void *q,const char *file,int line );
-#define d_new new( __FILE__,__LINE__ )
-
-#else
-
 #define d_new new
-
-#endif
-
-void trackmem(bool enable);
-void checkmem(std::ostream& out);
 
 //some stuff that should be in std libs
 int atoi(const std::string& s);
@@ -168,4 +144,5 @@ public:
     }
 };
 
-#endif
+extern std::string getBestPathName(const std::string& path);
+extern int setCurrentDirectory(const std::string& path);

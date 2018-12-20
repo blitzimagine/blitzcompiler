@@ -1,16 +1,18 @@
-/*
+#pragma once
 
-Platform neutral runtime library.
+#include "../stdutil/stdutil.h"
 
-To be statically linked with an appropriate gxruntime driver.
+class Debugger;
 
-*/
+class Runtime
+{
+public:
+    Runtime();
+    virtual ~Runtime();
+    virtual int version();
+    virtual const char* nextSym();
+    virtual int symValue(const char* sym);
+    virtual void shutdown();
+};
 
-#ifndef BBRUNTIME_H
-#define BBRUNTIME_H
-
-void bbruntime_link(void (*rtSym)(std::string sym));
-
-void bbruntime_panic(const char* err);
-
-#endif
+extern "C" _declspec(dllexport) Runtime* _cdecl runtimeGetRuntime();

@@ -1,19 +1,19 @@
-#include "std.h"
+#include "../stdutil/std.h"
 #include "nodes.h"
 
-static string fileLabel;
-static map<string, string> fileMap;
+static std::string fileLabel;
+static std::map<std::string, std::string> fileMap;
 
 void StmtNode::debug(int pos, Codegen* g)
 {
     if (g->debug)
     {
-        TNode* t = fileLabel.size() ? global(fileLabel) : iconst(0);
+        TNode* t = !fileLabel.empty() ? global(fileLabel) : iconst(0);
         g->code(call("__bbDebugStmt", iconst(pos), t));
     }
 }
 
-void StmtSeqNode::reset(const string& file, const string& lab)
+void StmtSeqNode::reset(const std::string& file, const std::string& lab)
 {
     fileLabel = "";
     fileMap.clear();
@@ -34,7 +34,7 @@ void StmtSeqNode::semant(Environ* e)
         } catch (Ex& x)
         {
             if (x.pos < 0) x.pos = stmts[k]->pos;
-            if (!x.file.size()) x.file = file;
+            if (x.file.empty()) x.file = file;
             throw;
         }
     }
@@ -42,8 +42,8 @@ void StmtSeqNode::semant(Environ* e)
 
 void StmtSeqNode::translate(Codegen* g)
 {
-    string t = fileLabel;
-    fileLabel = file.size() ? fileMap[file] : "";
+    std::string t = fileLabel;
+    fileLabel = !file.empty() ? fileMap[file] : "";
     for (int k = 0; k < (int)stmts.size(); ++k)
     {
         StmtNode* stmt = stmts[k];
@@ -54,7 +54,7 @@ void StmtSeqNode::translate(Codegen* g)
         } catch (Ex& x)
         {
             if (x.pos < 0) x.pos = stmts[k]->pos;
-            if (!x.file.size()) x.file = file;
+            if (x.file.empty()) x.file = file;
             throw;
         }
     }
@@ -206,7 +206,7 @@ void RestoreNode::semant(Environ* e)
 {
     if (e->level > 0) e = e->globals;
 
-    if (ident.size() == 0) sem_label = nullptr;
+    if (ident.empty()) sem_label = nullptr;
     else
     {
         sem_label = e->findLabel(ident);
@@ -272,12 +272,12 @@ void IfNode::translate(Codegen* g)
         else if (elseOpt) elseOpt->translate(g);
     } else
     {
-        string _else = genLabel();
+        std::string _else = genLabel();
         g->code(jumpf(expr->translate(g), _else));
         stmts->translate(g);
         if (elseOpt)
         {
-            string _else2 = genLabel();
+            std::string _else2 = genLabel();
             g->code(jump(_else2));
             g->label(_else);
             elseOpt->translate(g);
@@ -293,7 +293,7 @@ void IfNode::translate(Codegen* g)
 void ExitNode::semant(Environ* e)
 {
     sem_brk = e->breakLabel;
-    if (!sem_brk.size()) ex("break must appear inside a loop");
+    if (sem_brk.empty()) ex("break must appear inside a loop");
 }
 
 void ExitNode::translate(Codegen* g)
@@ -308,14 +308,14 @@ void WhileNode::semant(Environ* e)
 {
     expr = expr->semant(e);
     expr = expr->castTo(Type::int_type, e);
-    string brk = e->setBreak(sem_brk = genLabel());
+    std::string brk = e->setBreak(sem_brk = genLabel());
     stmts->semant(e);
     e->setBreak(brk);
 }
 
 void WhileNode::translate(Codegen* g)
 {
-    string loop = genLabel();
+    std::string loop = genLabel();
     if (ConstNode* c = expr->constNode())
     {
         if (!c->intValue()) return;
@@ -324,7 +324,7 @@ void WhileNode::translate(Codegen* g)
         g->code(jump(loop));
     } else
     {
-        string cond = genLabel();
+        std::string cond = genLabel();
         g->code(jump(cond));
         g->label(loop);
         stmts->translate(g);
@@ -368,7 +368,7 @@ void ForNode::semant(Environ* e)
 
     if (!stepExpr->constNode()) ex("Step value must be constant");
 
-    string brk = e->setBreak(sem_brk = genLabel());
+    std::string brk = e->setBreak(sem_brk = genLabel());
     stmts->semant(e);
     e->setBreak(brk);
 }
@@ -381,8 +381,8 @@ void ForNode::translate(Codegen* g)
     //initial assignment
     g->code(var->store(g, fromExpr->translate(g)));
 
-    string cond = genLabel();
-    string loop = genLabel();
+    std::string cond = genLabel();
+    std::string loop = genLabel();
     g->code(jump(cond));
     g->label(loop);
     stmts->translate(g);
@@ -415,7 +415,7 @@ void ForEachNode::semant(Environ* e)
     if (!t) ex("Type name not found");
     if (t != ty) ex("Type mismatch");
 
-    string brk = e->setBreak(sem_brk = genLabel());
+    std::string brk = e->setBreak(sem_brk = genLabel());
     stmts->semant(e);
     e->setBreak(brk);
 }
@@ -423,9 +423,9 @@ void ForEachNode::semant(Environ* e)
 void ForEachNode::translate(Codegen* g)
 {
     TNode *t, *l, *r;
-    string _loop = genLabel();
+    std::string _loop = genLabel();
 
-    string objFirst, objNext;
+    std::string objFirst, objNext;
 
     if (var->isObjParam())
     {
@@ -552,7 +552,7 @@ void InsertNode::translate(Codegen* g)
     if (g->debug) t1 = jumpf(t1, "__bbNullObjEx");
     TNode* t2 = expr2->translate(g);
     if (g->debug) t2 = jumpf(t2, "__bbNullObjEx");
-    string s = before ? "__bbObjInsBefore" : "__bbObjInsAfter";
+    std::string s = before ? "__bbObjInsBefore" : "__bbObjInsAfter";
     g->code(call(s, t1, t2));
 }
 
@@ -585,8 +585,8 @@ void SelectNode::translate(Codegen* g)
 
     g->code(sem_temp->store(g, expr->translate(g)));
 
-    vector<string> labs;
-    string brk = genLabel();
+    std::vector<std::string> labs;
+    std::string brk = genLabel();
 
     for (int k = 0; k < (int)cases.size(); ++k)
     {
@@ -618,7 +618,7 @@ void SelectNode::translate(Codegen* g)
 void RepeatNode::semant(Environ* e)
 {
     sem_brk = genLabel();
-    string brk = e->setBreak(sem_brk);
+    std::string brk = e->setBreak(sem_brk);
     stmts->semant(e);
     e->setBreak(brk);
     if (expr)
@@ -630,7 +630,7 @@ void RepeatNode::semant(Environ* e)
 
 void RepeatNode::translate(Codegen* g)
 {
-    string loop = genLabel();
+    std::string loop = genLabel();
     g->label(loop);
     stmts->translate(g);
     debug(untilPos, g);

@@ -6,9 +6,6 @@ class Module
 public:
     virtual ~Module() {}
 
-    virtual void* link(Module* libs) =0;
-    virtual bool createExe(const char* exe_file, const char* dll_file) =0;
-
     virtual int getPC() =0;
 
     virtual void emit(int byte) =0;
@@ -26,7 +23,6 @@ class Linker
 {
 public:
     virtual int version();
-    virtual bool canCreateExe();
     virtual Module* createModule();
     virtual void deleteModule(Module* mod);
 };

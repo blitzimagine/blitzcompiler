@@ -1,4 +1,4 @@
-#include "std.h"
+#include "../stdutil/std.h"
 #include "decl.h"
 #include "type.h"
 
@@ -15,12 +15,12 @@ void Decl::getName(char* buff)
 
 DeclSeq::~DeclSeq()
 {
-    for (; decls.size(); decls.pop_back()) delete decls.back();
+    for (; !decls.empty(); decls.pop_back()) delete decls.back();
 }
 
-Decl* DeclSeq::findDecl(const string& s)
+Decl* DeclSeq::findDecl(const std::string& s)
 {
-    vector<Decl*>::iterator it;
+    std::vector<Decl*>::iterator it;
     for (it = decls.begin(); it != decls.end(); ++it)
     {
         if ((*it)->name == s) return *it;
@@ -28,7 +28,7 @@ Decl* DeclSeq::findDecl(const string& s)
     return nullptr;
 }
 
-Decl* DeclSeq::insertDecl(const string& s, Type* t, int kind, ConstType* d)
+Decl* DeclSeq::insertDecl(const std::string& s, Type* t, int kind, ConstType* d)
 {
     if (findDecl(s)) return nullptr;
     decls.push_back(d_new Decl(s, t, kind, d));

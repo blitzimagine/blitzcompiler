@@ -1,4 +1,4 @@
-#include "std.h"
+#include "../stdutil/std.h"
 #include "nodes.h"
 
 //////////////////////////////////
@@ -66,7 +66,7 @@ void IdentVarNode::semant(Environ* e)
         }
         Type* ty = sem_decl->type;
         if (ty->constType()) ty = ty->constType()->valueType;
-        if (tag.size() && t != ty) ex("Variable type mismatch");
+        if (!tag.empty() && t != ty) ex("Variable type mismatch");
     } else
     {
         //ugly auto decl!

@@ -1,4 +1,4 @@
-#include "std.h"
+#include "../stdutil/std.h"
 #include "nodes.h"
 
 #include <math.h>
@@ -257,7 +257,7 @@ float IntConstNode::floatValue()
     return (float)value;
 }
 
-string IntConstNode::stringValue()
+std::string IntConstNode::stringValue()
 {
     return itoa(value);
 }
@@ -295,7 +295,7 @@ float FloatConstNode::floatValue()
     return value;
 }
 
-string FloatConstNode::stringValue()
+std::string FloatConstNode::stringValue()
 {
     return ftoa(value);
 }
@@ -303,14 +303,14 @@ string FloatConstNode::stringValue()
 /////////////////////
 // String constant //
 /////////////////////
-StringConstNode::StringConstNode(const string& s): value(s)
+StringConstNode::StringConstNode(const std::string& s): value(s)
 {
     sem_type = Type::string_type;
 }
 
 TNode* StringConstNode::translate(Codegen* g)
 {
-    string lab = genLabel();
+    std::string lab = genLabel();
     g->s_data(value, lab);
     return call("__bbStrConst", global(lab));
 }
@@ -325,7 +325,7 @@ float StringConstNode::floatValue()
     return (float)atof(value);
 }
 
-string StringConstNode::stringValue()
+std::string StringConstNode::stringValue()
 {
     return value;
 }

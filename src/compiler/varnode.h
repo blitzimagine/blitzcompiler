@@ -36,17 +36,17 @@ struct DeclVarNode : public VarNode
 
 struct IdentVarNode : public DeclVarNode
 {
-    string ident, tag;
-    IdentVarNode(const string& i, const string& t): ident(i), tag(t) {}
+    std::string ident, tag;
+    IdentVarNode(const std::string& i, const std::string& t): ident(i), tag(t) {}
     void semant(Environ* e) override;
 };
 
 struct ArrayVarNode : public VarNode
 {
-    string ident, tag;
+    std::string ident, tag;
     ExprSeqNode* exprs;
     Decl* sem_decl;
-    ArrayVarNode(const string& i, const string& t, ExprSeqNode* e): ident(i), tag(t), exprs(e) {}
+    ArrayVarNode(const std::string& i, const std::string& t, ExprSeqNode* e): ident(i), tag(t), exprs(e) {}
 
     ~ArrayVarNode()
     {
@@ -60,9 +60,9 @@ struct ArrayVarNode : public VarNode
 struct FieldVarNode : public VarNode
 {
     ExprNode* expr;
-    string ident, tag;
+    std::string ident, tag;
     Decl* sem_field;
-    FieldVarNode(ExprNode* e, const string& i, const string& t): expr(e), ident(i), tag(t) {}
+    FieldVarNode(ExprNode* e, const std::string& i, const std::string& t): expr(e), ident(i), tag(t) {}
 
     ~FieldVarNode()
     {

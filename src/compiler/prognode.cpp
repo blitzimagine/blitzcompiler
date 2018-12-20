@@ -1,4 +1,4 @@
-#include "std.h"
+#include "../stdutil/std.h"
 #include "nodes.h"
 
 //////////////////
@@ -25,7 +25,7 @@ Environ* ProgNode::semant(Environ* e)
     return sem_env;
 }
 
-void ProgNode::translate(Codegen* g, const vector<UserFunc>& usrfuncs)
+void ProgNode::translate(Codegen* g, const std::vector<UserFunc>& usrfuncs)
 {
     int k;
 
@@ -53,7 +53,7 @@ void ProgNode::translate(Codegen* g, const vector<UserFunc>& usrfuncs)
     if (t) g->code(t);
     if (g->debug)
     {
-        string t = genLabel();
+        std::string t = genLabel();
         g->s_data("<main program>", t);
         g->code(call("__bbDebugEnter", local(0), iconst((int)sem_env), global(t)));
     }
@@ -91,7 +91,7 @@ void ProgNode::translate(Codegen* g, const vector<UserFunc>& usrfuncs)
     datas->translate(g);
 
     //library functions
-    map<string, vector<int>> libFuncs;
+    std::map<std::string, std::vector<int>> libFuncs;
 
     //lib ptrs
     g->flush();
@@ -110,13 +110,13 @@ void ProgNode::translate(Codegen* g, const vector<UserFunc>& usrfuncs)
     //LIBS chunk
     g->flush();
     g->label("__LIBS");
-    map<string, vector<int>>::const_iterator lf_it;
+    std::map<std::string, std::vector<int>>::const_iterator lf_it;
     for (lf_it = libFuncs.begin(); lf_it != libFuncs.end(); ++lf_it)
     {
         //lib name
         g->s_data(lf_it->first);
 
-        const vector<int>& fns = lf_it->second;
+        const std::vector<int>& fns = lf_it->second;
 
         for (int j = 0; j < (int)fns.size(); ++j)
         {
