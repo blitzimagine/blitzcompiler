@@ -51,7 +51,8 @@ void ProgNode::translate(Codegen* g, const std::vector<UserFunc>& usrfuncs)
 
     //create locals
     TNode* t = createVars(sem_env);
-    if (t) g->code(t);
+    if (t)
+        g->code(t);
     if (g->debug)
     {
         std::string t = genLabel();
