@@ -30,7 +30,7 @@ static void showInfo()
 
 static void showUsage()
 {
-    cout << "Usage: blitzcc [-h|-q|+q|-c|-d|-k|+k|-v] [sourcefile.bb] [outputfile.asm]" << endl;
+    cout << "Usage: bbc [-h|-q|+q|-c|-d|-k|+k|-v] [sourcefile.bb] [outputfile.asm]" << endl;
 }
 
 static void showHelp()
