@@ -29,7 +29,8 @@ void ProgNode::translate(Codegen* g, const std::vector<UserFunc>& usrfuncs)
 {
     int k;
 
-    if (g->debug) g->s_data(stmts->file, file_lab);
+    if (g->debug)
+        g->s_data(stmts->file, file_lab);
 
     //enumerate locals
     int size = enumVars(sem_env);
